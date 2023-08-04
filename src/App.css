@@ -50,6 +50,21 @@ a {
 	flex-wrap: wrap;
 } */
 
+.mainPageContentDiv {
+	display: flex;
+	flex-direction: row;
+	border: 3px solid seagreen;
+	/* width: 100%; */
+	padding: 10px;
+}
+
+.mainPageAnimationDiv {
+	border: 2px solid slateblue;
+	height: 300px;
+	width: 300px;
+	margin: 25px;
+}
+
 .Board, .AntBoard {
 	border: 3px solid slateblue;
 	width: fit-content;
