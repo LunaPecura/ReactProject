@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MainPage = () => {
+const MainPage = (props) => {
 	return (
 		<div className='MainPage'>
 			<h1>Main</h1>

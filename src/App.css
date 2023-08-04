@@ -1,30 +1,94 @@
 .App {
+	background-color: #efefef;
 	text-align: center;
 	border: solid black;
 	margin: 10px;
 	padding: 5px;
+	font-family: 'Cambria';
+	border-radius: 5px;
 }
 
 .NavBar {
 	display: flex;
 	justify-content: space-evenly;
-	padding: 25px;
+	padding: 10px;
 	margin: 5px;
-	border: solid rebeccapurple;
+	border: 3px solid rebeccapurple;
+	border-radius: 3px;
 }
 
 .NavBarItem {
-	font-family: Impact;
-	border: 3px solid lightseagreen;
-	padding: 10px;
-	font-size: 25px;
+	border: 2px solid gray;
+	padding: 5px 10px;
+	font-size: 20px;
+	background-color: lightgray;
 	cursor: pointer;
+	border-radius: 8px;
+	width: 100px;
+	font-weight: bold;
 } .NavBarItem:hover {
-	border-width: 5px;
+	background-color: rebeccapurple;
 }
 
-.MainPage, .ProjectsPage {
-	padding: 25px;
+a {
+	color: white;
+} 
+
+.MainPage, .ProjectsPage, .BoardPage, .FidgetPage, .BSTPage, .AntPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 25px;
 	margin: 5px;
-	border: solid navy;
+	border: 3px solid navy;
+	border-radius: 3px;
+}
+
+/* .FidgetPage .content{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+} */
+
+.Board, .AntBoard {
+	border: 3px solid slateblue;
+	width: fit-content;
+	padding: 1px;
+}
+
+.CellRow, .AntCellRow {
+	display: flex;
+	flex-direction: row;
+}
+
+.Cell, .AntCell {
+	width: 20px;
+	height: 20px;
+	border: 1px solid gray;
+	border-radius: 5px;
+} .Cell:hover {
+	border-color: orangered;
+}
+
+.Dim1Board {
+	display: flex;
+	flex-wrap: wrap;
+	border: 3px solid slateblue;
+	padding: 1px;
+	width: 500px;
+}
+
+.AntApp, .BSTApp {
+	display: flex;
+	border: .2px solid darkslateblue;
+}
+
+.start, .turn, .step {
+	width: 150px;
+	height: 50px;
+	margin: 10px;
+}
+
+.hidden {
+	display: none;
 }
