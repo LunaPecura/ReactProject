@@ -4,15 +4,11 @@ import {Route, Routes} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import MainPage from './pages/MainPage';
 import ProjectsPage from './pages/ProjectsPage';
-// import BoardPage from './pages/BoardPage';
-// import FidgetPage from './pages/FidgetPage';
-// import AntApp from './components/AntApp';
 import AntPage from './pages/AntPage';
 import BSTPage from './pages/BSTPage';
+import TheoryPage from './pages/TheoryPage';
 
 function App() {
-
-	const n = 25;
 
 	return (
 		<div className="App">
@@ -26,6 +22,7 @@ function App() {
 				{/* <Route path='/fidgets' element={<FidgetPage />} /> */}
 				<Route path='/ant' element={<AntPage />} />
 				<Route path='/bst' element={<BSTPage />} />
+				<Route path='/theory' element={<TheoryPage />} />
 			</Routes>
 
 		</div>

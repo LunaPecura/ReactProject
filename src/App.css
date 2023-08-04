@@ -34,7 +34,7 @@ a {
 	color: white;
 } 
 
-.MainPage, .ProjectsPage, .BoardPage, .FidgetPage, .BSTPage, .AntPage {
+.MainPage, .ProjectsPage, .BoardPage, .FidgetPage, .BSTPage, .AntPage, .TheoryPage{
 	display: flex;
 	flex-direction: column;
 	align-items: center;

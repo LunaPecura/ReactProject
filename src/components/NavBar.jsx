@@ -10,6 +10,7 @@ const NavBar = () => {
 			{/* <NavBarItem linkTo="fidgets" content="Fidgets" /> */}
 			<NavBarItem linkTo="ant" content="Ants" />
 			<NavBarItem linkTo="bst" content="BST" />
+			<NavBarItem linkTo="theory" content="Theory" />
 		</div>
 	)
 }
