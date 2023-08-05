@@ -111,6 +111,7 @@ a {
 .treeLv {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	width: fit-content;
 	border: 2px solid darkseagreen;
 	padding: 5px;
@@ -118,6 +119,32 @@ a {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.treeLv.lv0 {
+	width: 50%;
+}
+
+.treeLv.lv1 {
+	width: 75%;
+	justify-content: space-around;
+}
+
+.treeLv.lv2 {
+	width: 88%;
+	justify-content: space-evenly;
+}
+
+.treeLv.lv3 {
+	width: 94%;
+	justify-content: space-around;
+}
+
+.treeLv.lv4 {
+	width: 99%;
+	justify-content: space-evenly;
+}
+
+
 
 .nodeLv {
 	border: 1px solid black;
