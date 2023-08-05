@@ -4,55 +4,9 @@ const BSTApp = () => {
 	
 	return (
 		<div className='BSTApp'>
-			<div className='tree'>
+			<h3>BSTApp</h3>
+			<div className='tree'>TREE</div>
 
-				<div className='treeLv lv0'>
-					<div className='nodeLv lv0'>0</div>
-				</div>
-
-				<div className='treeLv lv1'>
-					<div className='nodeLv lv1'>1</div>
-					<div className='nodeLv lv1'>1</div>
-				</div>
-				
-				<div className='treeLv lv2'>
-					<div className='nodeLv 2'>2</div>
-					<div className='nodeLv 2'>2</div>
-					<div className='nodeLv 2'>2</div>
-					<div className='nodeLv 2'>2</div>
-				</div>
-				
-				<div className='treeLv lv3'>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-					<div className='nodeLv 3'>3</div>
-				</div>
-				
-				<div className='treeLv lv4'>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-					<div className='nodeLv 4'>4</div>
-				</div>
-
-			</div>
 		</div>
 	)
 }
