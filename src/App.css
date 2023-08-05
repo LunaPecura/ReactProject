@@ -65,6 +65,8 @@ a {
 	margin: 25px;
 }
 
+
+
 .Board, .AntBoard {
 	border: 3px solid slateblue;
 	width: fit-content;
@@ -96,6 +98,33 @@ a {
 .AntApp, .BSTApp {
 	display: flex;
 	border: .2px solid darkslateblue;
+}
+
+.tree {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: solid 3px seagreen;
+	padding: 5px;
+}
+
+.treeLv {
+	display: flex;
+	flex-direction: row;
+	width: fit-content;
+	border: 2px solid darkseagreen;
+	padding: 5px;
+	margin: 5px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.nodeLv {
+	border: 1px solid black;
+	margin: 2px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
 }
 
 .start, .turn, .step {
