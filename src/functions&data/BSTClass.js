@@ -1,5 +1,5 @@
 class BST {
-
+	// path;
 	value; // integer value
 	left; // reference to another BST whose value will be < this.value
 	right; // reference to another BST whose value will be > this.value
@@ -14,6 +14,13 @@ class BST {
 		else if(newValue < this.value) { this.left.addValue(newValue); }
 		else if(newValue > this.value) { this.right.addValue(newValue); }
 		return this;
+	}
+
+	containsValue(value) {
+		if(this.value === null) { return false; } 
+		else if(this.value === value) { return true; }
+		else { return this.left.containsValue(value) || 
+						this.right.containsValue(value) }
 	}
 
 	addValues(valueArray) { valueArray.forEach(value => { this.addValue(value); }); }

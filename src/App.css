@@ -81,7 +81,8 @@ a {
 	flex-direction: column;
 	align-items: center;
 	border: 3px solid seagreen;
-	width: 80%;
+	/* width: 80%; */
+	width: 90%;
 	padding: 10px;
 }
 
@@ -132,7 +133,8 @@ a {
 	margin: 5px;
 	margin-top: 50px;
 	margin-bottom: 100px;
-	width: 500px;
+	/* width: fit-content; */
+	width: 80%;
 }
 
 .BSTSchema {
@@ -143,12 +145,6 @@ a {
 	margin-bottom: 50px;
 }
 
-
-
-
-
-
-
 .tree {
 	display: flex;
 	flex-direction: column;
@@ -158,11 +154,53 @@ a {
 	margin: 5px;
 }
 
-.ballpit {
+.nodeDiv {
+	border: 1px solid black;
+	margin: 2px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	cursor: pointer;
+}
+
+.ballpit { /* contains a list of nodeDivs */
+	display: flex;
+	justify-content: space-around;
 	border: solid 2px seagreen;
 	padding: 15px;
 	margin: 5px;
 }
+
+#myTree {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.BST-startButton {
+	height: 50px;
+	width: 100%;
+	background-color: darkgray;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	margin-top: 80px;
+	margin-bottom: 100px;
+	cursor: pointer;
+	border: 1px solid black
+} .BST-startButton:hover {
+	background-color: teal;
+}
+
+
+
+
+
+
+
+
+
+
 
 .treeLv {
 	display: flex;
