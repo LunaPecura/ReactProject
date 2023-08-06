@@ -6,16 +6,20 @@ const BSTApp = () => {
 	let myTree;
 
 	const startTree = () => {
+		document.querySelector(".BST-startButton").classList.add("hidden");
 		myTree = new BST();
 		console.log(myTree);
 		document.querySelector("#myTree").innerHTML =
 			"MY TREE<br>(still empty, but prepared)"
 	}
 
-	const addValue = n => () => {
+	const addNode = n => () => {
+		if(myTree.containsValue(n)) { return; }
 		myTree.addValue(n);
-		document.querySelector("#myTree").innerHTML +=
-			`<br>Added ${n}`
+		const path = myTree.getPath(n);
+		console.log(path);
+		document.querySelector("#myTree").innerHTML += `<p>Added ${n} at ${path}</p>`
+		// document.querySelector("#myTree").innerHTML += `${path}`
 	}
 	
 	return (
@@ -28,7 +32,8 @@ const BSTApp = () => {
 
 
 			<div className='ballpit'>
-				<div className='nodeDiv' id='nodeDiv0' onClick={addValue(0)}>0</div>
+				<div style={{display: 'flex'}}>
+				<div className='nodeDiv' id='nodeDiv0' onClick={addNode(0)}>0</div>
 				<div className='nodeDiv' id='nodeDiv1'>1</div>
 				<div className='nodeDiv' id='nodeDiv2'>2</div>
 				<div className='nodeDiv' id='nodeDiv3'>3</div>
@@ -38,6 +43,7 @@ const BSTApp = () => {
 				<div className='nodeDiv' id='nodeDiv7'>7</div>
 				<div className='nodeDiv' id='nodeDiv8'>8</div>
 				<div className='nodeDiv' id='nodeDiv9'>9</div>
+				</div>
 			</div>
 
 			<div className='tree' id='myTree'>EMPTY TREE</div>
