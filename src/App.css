@@ -27,8 +27,7 @@
 	width: 100px;
 	font-weight: bold;
 } .NavBarItem:hover {
-	background-color: rebeccapurple;
-}
+	background-color: rebeccapurple; }
 
 a {
 	color: white;
@@ -172,21 +171,39 @@ a {
 }
 
 #myTree {
-	font-size: 25px;
-	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: solid 2px seagreen;
+	padding: 15px;
+	margin: 5px;
+	/* font-size: 25px;
+	font-weight: bold; */
+}
+
+.treeDivRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: fit-content;
+	border: 2px solid darkseagreen;
+	padding: 5px;
+	margin: 5px;
+	/* margin-top: 20px;
+	margin-bottom: 20px; */
 }
 
 .BST-startButton {
 	height: 50px;
-	width: 100%;
+	width: 98%;
 	background-color: darkgray;
 	color: white;
 	font-size: 20px;
 	font-weight: bold;
 	line-height: 50px;
-	margin: 10px;
+	margin: 10px 0px;
 	cursor: pointer;
-	border: 1px solid black
+	border: 1px solid black;
 } .BST-startButton:hover {
 	background-color: teal;
 }

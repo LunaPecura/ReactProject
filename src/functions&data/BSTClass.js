@@ -40,12 +40,12 @@ class BST {
 	addValues(valueArray) { valueArray.forEach(value => { this.addValue(value); }); }
 }
 
-// export default BST;
+export default BST;
 
-const tree = new BST();
-tree.addValues([5,7,3,9]);
-console.log(tree);
-console.log(tree.getPath(9))
-console.log(tree.getIndex(9));
+// const tree = new BST();
+// tree.addValues([5,7,3,9]);
+// console.log(tree);
+// console.log(tree.getPath(9))
+// console.log(tree.getIndex(9));
 
 
