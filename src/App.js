@@ -8,7 +8,6 @@ import NavBar from './components/NavBar';
 import MainPage from './pages/MainPage';
 import ProjectsPage from './pages/ProjectsPage';
 import AntPage from './pages/AntPage';
-import BSTPage from './pages/BSTPage';
 import LibraryPage from './pages/LibraryPage';
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
 				<Route path='/' element={<MainPage />} />
 				<Route path='/projects' element={<ProjectsPage />} />
 				<Route path='/ant' element={<AntPage />} />
-				<Route path='/bst' element={<BSTPage />} />
 				<Route path='/library' element={<LibraryPage />} />
 			</Routes>
 

@@ -7,7 +7,6 @@ const NavBar = () => {
 			<NavBarItem linkTo="" header="Main" />
 			<NavBarItem linkTo="projects" header="Projects" />
 			<NavBarItem linkTo="ant" header="Ants" />
-			<NavBarItem linkTo="bst" header="BST" />
 			<NavBarItem linkTo="library" header="Library" />
 
 		</div>
