@@ -18,19 +18,23 @@ const BSTApp = () => {
 
 	const startTree = () => {
 		document.querySelector(".BST-startButton").classList.add("hidden");
-		myTree = new BST();
+		myTree = new BST("", 0, 0);
 		currentTreeHeight = 0;
 	}
 
 	const addNode = n => () => {
 		if(myTree.containsValue(n)) { return; }
+		myTree.addValue(n);
+		const [rowIndex, colIndex] = myTree.getIndex(n);
+		if(rowIndex === currentTreeHeight) { addLevelToTree(rowIndex); }
 		document.querySelector(`#ballpitDiv${n}`).removeAttribute("onclick");
 		document.querySelector(`#ballpitDiv${n}`).setAttribute("style", "color:white")
 		
-		myTree.addValue(n);
+		
 		console.log(myTree.getIndex(n));
-		const [rowIndex, colIndex] = myTree.getIndex(n);
-		if(rowIndex === currentTreeHeight) { addLevelToTree(rowIndex); }
+		// console.log(myTree);
+		 /* [myTree.indexRow, myTree.indexCol]; */
+		
 		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).innerHTML = n;
 	}
 	
