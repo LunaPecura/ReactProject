@@ -73,12 +73,12 @@ const AntApp = (props) => {
 
 	return (
 		<div className='AntApp'>
+			{/* <h2>Langton's Ant</h2> */}
 			<AntBoard n={n} data={data} />
 			<div>
 				<div><button className="antButton start" onClick={start}>Start</button></div>
 				<div><button className="antButto turn hidden" onClick={turn}>Turn</button></div>
 				<div><button className="antButton step hidden" onClick={step}>Step</button></div>
-				{/* <div><button className="antButton" onClick={round}>Round</button></div> */}
 			</div>
 		</div>
 	)

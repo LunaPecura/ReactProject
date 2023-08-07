@@ -6,8 +6,8 @@ const NavBar = () => {
 		<div className='NavBar'>
 			<NavBarItem linkTo="" header="Main" />
 			<NavBarItem linkTo="projects" header="Projects" />
-			<NavBarItem linkTo="ant" header="Ants" />
 			<NavBarItem linkTo="library" header="Library" />
+			<NavBarItem linkTo="contact" header="Contact" />
 		</div>
 	)
 }

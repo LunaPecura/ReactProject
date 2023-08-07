@@ -1,3 +1,6 @@
+
+/* Top Level ******************************************************************************************/
+
 .App {
 	background-color: #efefef;
 	text-align: center;
@@ -29,11 +32,10 @@
 } .NavBarItem:hover {
 	background-color: rebeccapurple; }
 
-a {
-	color: white;
-} 
 
-.MainPage, .ProjectsPage, .AntPage, .LibraryPage { 
+/* Pages *********************************************************************************************/
+
+.MainPage, .ProjectsPage, .LibraryPage, .ContactPage { 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -43,21 +45,15 @@ a {
 	border-radius: 3px;
 }
 
-.MainPage {
-	/* background-color: black; */
-	/* color: white; */
-}
-
 .mainPageContentDiv {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	border: 2px solid black;
+	/* border: 2px solid black; */
 	padding: 25px;
 	width: 80%;
 	background-size: cover;
-	/* background-size:cover; */
 }
 
 .mainPageAnimationDiv {
@@ -94,7 +90,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 3px solid seagreen;
+	/* border: 3px solid seagreen; */
 	/* width: 80%; */
 	width: 90%;
 	padding: 10px;
@@ -136,7 +132,8 @@ a {
 
 .AntApp {
 	display: flex;
-	border: 3px solid darkslateblue;
+	border: 2px solid darkslateblue;
+	width: 80%;
 	padding: 20px;
 	margin: 5px;
 }
@@ -145,7 +142,7 @@ a {
 	border: 2px solid darkslateblue;
 	padding: 20px;
 	margin: 5px;
-	margin-top: 50px;
+	/* margin-top: 50px; */
 	margin-bottom: 100px;
 	/* width: fit-content; */
 	width: 80%;
@@ -308,6 +305,11 @@ a {
 	margin: 10px;
 }
 
+a {
+	color: white;
+} 
+
 .hidden {
 	display: none;
 }
+
