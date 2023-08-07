@@ -1,12 +1,13 @@
 import React from 'react'
 import BST from '../functions&data/BSTClass'
-// import '../App.css'
+
 
 const BSTApp = () => {
 
 	let myTree;
 	let currentTreeHeight;
 
+	// add another level to the tree with appropriate number & attributes of node divs
 	const addLevelToTree = (rowIndex) => {
 		currentTreeHeight++;
 		let acc = "";
@@ -16,25 +17,23 @@ const BSTApp = () => {
 		document.querySelector('#myTree').innerHTML += newDiv;
 	}
 
+	// initialize upon user button click
 	const startTree = () => {
 		document.querySelector(".BST-startButton").classList.add("hidden");
 		myTree = new BST("", 0, 0);
 		currentTreeHeight = 0;
 	}
 
+	// add node of value n to the BST
 	const addNode = n => () => {
-		if(myTree.containsValue(n)) { return; }
+		if(myTree.containsValue(n)) { return; } // do nothing if node is already present
 		myTree.addValue(n);
 		const [rowIndex, colIndex] = myTree.getIndex(n);
+
+		// adjust screen
 		if(rowIndex === currentTreeHeight) { addLevelToTree(rowIndex); }
 		document.querySelector(`#ballpitDiv${n}`).removeAttribute("onclick");
 		document.querySelector(`#ballpitDiv${n}`).setAttribute("style", "color:white")
-		
-		
-		console.log(myTree.getIndex(n));
-		// console.log(myTree);
-		 /* [myTree.indexRow, myTree.indexCol]; */
-		
 		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).innerHTML = n;
 	}
 	
