@@ -1,6 +1,9 @@
 import React from 'react'
 
-const MainPage = () => {
+const MainPage = (props) => {
+
+	const imgSrc = props.apodData === null ? "" : props.apodData.url;
+
 	return (
 		<div className='MainPage'>
 			<h1>Main</h1>
@@ -9,7 +12,9 @@ const MainPage = () => {
 				<div className='mainPageAnimationDiv'>Animation 2</div>
 				<div className='mainPageAnimationDiv'>Animation 3</div>
 			</div>
+			<div className='apodImg'><img src={imgSrc} /></div>
 		</div>
+		
 	)
 }
 
