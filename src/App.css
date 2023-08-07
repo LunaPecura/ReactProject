@@ -43,19 +43,33 @@ a {
 	border-radius: 3px;
 }
 
+.MainPage {
+	/* background-color: black; */
+	/* color: white; */
+}
+
 .mainPageContentDiv {
 	display: flex;
 	flex-direction: row;
-	border: 3px solid seagreen;
-	padding: 10px;
-	margin-bottom: 100px;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	border: 2px solid black;
+	padding: 25px;
+	width: 80%;
+	background-size: cover;
+	/* background-size:cover; */
 }
 
 .mainPageAnimationDiv {
-	border: 2px solid slateblue;
-	height: 300px;
+	border: 2px solid gray;
+	height: 400px;
+	line-height: 400px;
 	width: 300px;
-	margin: 25px;
+	margin: 10px;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: white;
+	opacity: 50%;
 }
 
 .LibraryMenuBar {
