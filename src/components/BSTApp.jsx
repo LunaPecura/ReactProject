@@ -15,7 +15,8 @@ const BSTApp = () => {
 		currentTreeHeight++;
 		let acc = "";
 		for(let j=0; j<2**rowIndex; j++) {
-			acc += `<div class='nodeDiv' id='nodeDiv${rowIndex}${j}'></div>`; }
+			acc += `<div class='nodeDiv' id='nodeDiv${rowIndex}${j}' 
+					style='width:${25-rowIndex*rowIndex/2}px;height:${25-rowIndex*rowIndex/2}px'></div>`; }
 		const newDiv = `<div class='treeDivRow' id='treeDivRow${rowIndex}'>${acc}</div>`
 		document.querySelector('#myTree').innerHTML += newDiv;
 	}
@@ -38,9 +39,9 @@ const BSTApp = () => {
 		if(rowIndex === currentTreeHeight) { addLevelToTree(rowIndex); }
 		document.querySelector(`#ballpitDiv${n}`).removeAttribute("onclick");
 		document.querySelector(`#ballpitDiv${n}`).setAttribute("style", "color:white;opacity:50%")
-		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).innerHTML = n;
+		// document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).innerHTML = n;
 		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).setAttribute("style", 
-			`background-color:${colors[n]};border-radius:50%`);
+			`background-color:${colors[n]};border-radius:50%;width:${25-rowIndex*rowIndex/2}px;height:${25-rowIndex*rowIndex/2}px`);
 	}
 	
 	return (
