@@ -7,7 +7,7 @@ class BST {
 
 	constructor(path, i, j) { 
 		this.value = null; 
-		this.path=path; 
+		this.path = path; 
 		this.indexRow = i;
 		this.indexCol = j;
 	}

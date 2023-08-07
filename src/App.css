@@ -170,6 +170,28 @@ a {
 	margin: 5px;
 }
 
+#ballpitDiv0 { background-color: darkred; }
+#ballpitDiv1 { background-color: red; }
+#ballpitDiv2 { background-color: orange; }
+#ballpitDiv3 { background-color: yellow; }
+#ballpitDiv4 { background-color: greenyellow; }
+#ballpitDiv5 { background-color: green; }
+#ballpitDiv6 { background-color: skyblue; }
+#ballpitDiv7 { background-color: blue; }
+#ballpitDiv8 { background-color: purple; }
+#ballpitDiv9 { background-color: palevioletred; }
+
+.ballpitDiv {
+	color: black;
+	font-weight: bold;
+	
+} .ballpitDiv:hover {
+	border-width: 3px;
+	border-color: white;
+	color: white;
+	
+}
+
 #myTree {
 	display: flex;
 	flex-direction: column;
