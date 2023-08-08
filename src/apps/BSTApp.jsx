@@ -49,7 +49,8 @@ const BSTApp = () => {
 	
 	return (
 		<div className='BSTApp'>
-			<h3>BSTApp</h3>
+			<div>...in progress...</div>
+			<h2>DIY Binary Search Tree</h2>
 
 			<button className='BST-startButton' onClick={startTree}>
 				Plant A Binary Search Tree

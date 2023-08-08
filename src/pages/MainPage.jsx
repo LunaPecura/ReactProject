@@ -7,22 +7,22 @@ const MainPage = () => {
 			<h1>Main</h1>
 			<div className='mainPage content'>
 
-				<div className='mainPageAnimationDiv'>
-					<p>TO DO</p>
-					<p>Animation 1</p>
-					<p>(Langton's Ant)</p>
+				<div className='todo'>
+					<div>TO DO</div>
+					<div>Animation 1</div> 
+					<div>(Langton's Ant)</div>
 				</div>
 
-				<div className='mainPageAnimationDiv'>
-					<p>TO DO</p>
-					<p>Animation 2</p>
-					<p>(Growing BST)</p>
+				<div className='todo'>
+					<div>TO DO</div>
+					<div>Animation 2</div> 
+					<div>(Growing BST)</div>
 				</div>
 
-				<div className='mainPageAnimationDiv'>
-					<p>TO DO</p>
-					<p>Animation 3</p>
-					<p>(Conway's <br /> Game of Life)</p>
+				<div className='todo'>
+					<div>TO DO</div>
+					<div>Animation 3</div> 
+					<div>(Game of Life)</div>
 				</div>
 
 			</div>

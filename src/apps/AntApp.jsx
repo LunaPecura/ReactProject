@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Ant from '../js-classes/AntClass'
 import AntBoard from './AntBoard';
-import updatedData from '../js-classes/HelperFunctions'
+import Ant from '../js-classes/AntClass'
+import updatedData from '../js-classes/HelperFunctions' // TODO
 
 
 
@@ -17,8 +17,9 @@ const AntApp = (props) => {
 	const [counter, setCounter] = useState(1);
 
 	const start = () => {
+		document.querySelector(".start").classList.add("hidden");
 		document.querySelector(".turn").classList.remove("hidden");
-		document.querySelector(".start").setAttribute('disabled', true);
+		// document.querySelector(".start").setAttribute('disabled', true);
 		const [x, y] = [Math.floor(n/2), Math.floor(n/2)];
 		const newContentMatrix = updatedData(contentMatrix, x, y, 'A');
 		setContentMatrix(newContentMatrix);
@@ -73,7 +74,8 @@ const AntApp = (props) => {
 
 	return (
 		<div className='AntApp'>
-			{/* <h2>Langton's Ant</h2> */}
+			<div>...in progress...</div>
+			<h2>Langton's Ant</h2>
 			<AntBoard n={n} data={data} />
 			<div>
 				<div><button className="antButton start" onClick={start}>Start</button></div>

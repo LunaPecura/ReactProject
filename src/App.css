@@ -4,7 +4,7 @@
 .App {
 	background-color: #efefef;
 	text-align: center;
-	border: solid black;
+	border: solid gray;
 	margin: 10px;
 	padding: 5px;
 	font-family: 'Cambria';
@@ -51,6 +51,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	align-items: center;
 	padding: 25px;
 	width: 95%;
 	/* border: 2px solid black; */
@@ -63,7 +64,11 @@
 	padding: 20px;
 	margin: 5px;
 	border-radius: 20px;
-	border: 2px solid gray;
+	border: 3px solid gray;
+}
+
+.AntApp {
+	width: 350px;
 }
 
 .BST-startButton {
@@ -87,11 +92,14 @@
 
 
 
-.mainPageAnimationDiv {
+.todo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 	border: 2px solid gray;
 	height: 300px;
 	width: 250px;
-	margin: 10px;
+	margin: 15px 10px;
 	font-size: 25px;
 	font-weight: bold;
 	background-color: white;
@@ -111,8 +119,8 @@
 }
 
 .Cell, .AntCell {
-	width: 15px;
-	height: 15px;
+	width: 20px;
+	height: 20px;
 	border: 1px solid gray;
 	border-radius: 5px;
 } .Cell:hover {
@@ -207,7 +215,21 @@
 	width: 150px;
 	height: 50px;
 	margin: 10px;
+	cursor: pointer;
+	border: 1px solid gray;
+	background-color: darkgray;
+} .start:hover, .turn:hover, .step:hover {
+	font-weight: bold;
+	border-width: 3px;
+} .turn:hover {
+	background-color: orange;
+	opacity: 75%;
+} .step:hover {
+	background-color: teal;
+	opacity: 75%;
+	color: black;
 }
+
 
 a {
 	color: white;
