@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 
 
-const ContactPage = () => {
+const ConnectPage = () => {
 
 	const apiKey = 'LzgRZhjbLiFQT87zeQBoVpJOa3hl1Rk9U4mnRXza'
 	const [apodData, setApodData] = useState(null)
@@ -21,18 +21,18 @@ const ContactPage = () => {
 
 
 	return (
-		<div className='Page Contact'>
-			{/* <h1>Contact</h1> */}
+		<div className='Page Connect'>
+			{/* <h1>Connect</h1> */}
 
 			<h1>NASA's aSTRONOMY pICTURE oF <small><small><small>THE</small></small></small> dAY (apod)</h1>
 			<h2><code>[API_requirement === fullfilled;]</code></h2>
 			<p>{todaysDate}</p>
 			
-			<div className='contactPage content'>
-				<div className='apodImg'><img src={imgSrc} /></div>
+			<div className='connectPage content'>
+				<div className='apodImg'><img src={imgSrc} style={{width: '100%'}}/></div>
 			</div>
 		</div>
 	)
 }
 
-export default ContactPage
+export default ConnectPage

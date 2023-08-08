@@ -8,7 +8,7 @@ import NavBar from './components/NavBar';
 import MainPage from './pages/MainPage';
 import ProjectsPage from './pages/ProjectsPage';
 import LibraryPage from './pages/LibraryPage';
-import ContactPage from './pages/ContactPage';
+import ConnectPage from './pages/ConnectPage';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
 				<Route path='/' element={<MainPage />} />
 				<Route path='/projects' element={<ProjectsPage />} />
 				<Route path='/library' element={<LibraryPage />} />
-				<Route path='/contact' element={<ContactPage />} />
+				<Route path='/connect' element={<ConnectPage />} />
 			</Routes>
 
 		</div>
