@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useEffect, useState } from 'react';
 
@@ -20,13 +21,16 @@ const ContactPage = () => {
 
 
 	return (
-		<div className='ContactPage' style={{backgroundColor: 'black', color: 'white'}}>
+		<div className='Page Contact'>
 			{/* <h1>Contact</h1> */}
-			<h1 style={{color:'white', marginBottom:'50px'}} >
-				NASA's aSTRONOMY pICTURE oF <small><small><small>THE</small></small></small> dAY (apod)</h1>
+
+			<h1>NASA's aSTRONOMY pICTURE oF <small><small><small>THE</small></small></small> dAY (apod)</h1>
 			<h2><code>[API_requirement === fullfilled;]</code></h2>
-			<p style={{color: 'white'}}>{todaysDate}</p>
-			<div className='apodImg'><img src={imgSrc} /></div>
+			<p>{todaysDate}</p>
+			
+			<div className='contactPage content'>
+				<div className='apodImg'><img src={imgSrc} /></div>
+			</div>
 		</div>
 	)
 }

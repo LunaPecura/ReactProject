@@ -1,5 +1,6 @@
+
 import React from 'react'
-import BST from '../functions&data/BSTClass'
+import BST from '../js-classes/BSTClass'
 
 
 const BSTApp = () => {
@@ -51,7 +52,7 @@ const BSTApp = () => {
 			<h3>BSTApp</h3>
 
 			<button className='BST-startButton' onClick={startTree}>
-				Make A Binary Search Tree
+				Plant A Binary Search Tree
 			</button>
 
 

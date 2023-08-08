@@ -1,5 +1,5 @@
 
-/* Top Level ******************************************************************************************/
+/* Top Level ************************************************************************************/
 
 .App {
 	background-color: #efefef;
@@ -33,9 +33,10 @@
 	background-color: rebeccapurple; }
 
 
-/* Pages *********************************************************************************************/
+/* Pages ****************************************************************************************/
 
-.MainPage, .ProjectsPage, .LibraryPage, .ContactPage { 
+/* ==> use w/ 'Main', 'Projects', 'Library', 'Contact' */
+.Page { 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -45,61 +46,57 @@
 	border-radius: 3px;
 }
 
-.mainPageContentDiv {
+/* ==> use w/ 'mainPage', 'projectsPage', 'libraryPage', 'contactPage' */
+.content {
 	display: flex;
-	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	/* border: 2px solid black; */
 	padding: 25px;
-	width: 80%;
-	background-size: cover;
+	width: 95%;
+	border: 2px solid black;
 }
+
+
+/* Apps *****************************************************************************************/
+
+.AntApp, .BSTApp {
+	padding: 20px;
+	margin: 5px;
+	border-radius: 20px;
+	border: 2px solid gray;
+}
+
+.BST-startButton {
+	height: 50px;
+	background-color: seagreen;
+	/* color: white; */
+	opacity: 50%;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	margin-top: 10px;
+	padding: 0px 10px;
+	cursor: pointer;
+	border: 1px solid gray;
+} .BST-startButton:hover {
+	opacity: 80%;
+	border-color: black;
+	color: whitesmoke;
+}
+
+
+
 
 .mainPageAnimationDiv {
 	border: 2px solid gray;
-	height: 400px;
-	line-height: 400px;
-	width: 300px;
+	height: 300px;
+	width: 250px;
 	margin: 10px;
 	font-size: 25px;
 	font-weight: bold;
 	background-color: white;
 	opacity: 50%;
 }
-
-.LibraryMenuBar {
-	display: flex;
-	flex-direction: row;
-	width: 98%;
-	justify-content: space-around;
-	opacity: 75%;
-}
-
-.LibraryMenuBarItem {
-	margin: 5px;
-	padding: 10px;
-	width: 150px;
-	font-weight: bold;
-	cursor: pointer;
-} .LibraryMenuBarItem:hover{
-	background-color: darkgray;
-}
-
-.LibraryContent {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	/* border: 3px solid seagreen; */
-	/* width: 80%; */
-	width: 90%;
-	padding: 10px;
-}
-
-
-
-
-
 
 
 .Board, .AntBoard {
@@ -114,53 +111,22 @@
 }
 
 .Cell, .AntCell {
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	border: 1px solid gray;
 	border-radius: 5px;
 } .Cell:hover {
 	border-color: orangered;
 }
 
-.Dim1Board {
-	display: flex;
-	flex-wrap: wrap;
-	border: 3px solid slateblue;
-	padding: 1px;
-	width: 500px;
-}
 
-.AntApp {
-	display: flex;
-	border: 2px solid darkslateblue;
-	width: 80%;
-	padding: 20px;
-	margin: 5px;
-}
 
-.BSTApp {
-	border: 2px solid darkslateblue;
-	padding: 20px;
-	margin: 5px;
-	/* margin-top: 50px; */
-	margin-bottom: 100px;
-	/* width: fit-content; */
-	width: 80%;
-}
-
-.BSTSchema {
-	border: 2px solid darkslateblue;
-	padding: 20px;
-	margin: 5px;
-	margin-top: 100px;
-	margin-bottom: 50px;
-}
 
 .tree {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: solid 2px seagreen;
+	/* border: solid 2px seagreen; */
 	padding: 15px;
 	margin: 5px;
 }
@@ -208,7 +174,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: solid 2px seagreen;
+	/* border: solid 2px seagreen; */
 	padding: 15px;
 	margin: 5px;
 	/* font-size: 25px;
@@ -228,20 +194,6 @@
 	margin-bottom: 20px; */
 }
 
-.BST-startButton {
-	height: 50px;
-	width: 98%;
-	background-color: darkgray;
-	color: white;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 50px;
-	margin: 10px 0px;
-	cursor: pointer;
-	border: 1px solid black;
-} .BST-startButton:hover {
-	background-color: teal;
-}
 
 
 
@@ -250,54 +202,6 @@
 
 
 
-
-
-
-.treeLv {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	width: fit-content;
-	border: 2px solid darkseagreen;
-	padding: 5px;
-	margin: 5px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.treeLv.lv0 {
-	width: 50%;
-}
-
-.treeLv.lv1 {
-	width: 75%;
-	justify-content: space-around;
-}
-
-.treeLv.lv2 {
-	width: 88%;
-	justify-content: space-evenly;
-}
-
-.treeLv.lv3 {
-	width: 94%;
-	justify-content: space-around;
-}
-
-.treeLv.lv4 {
-	width: 99%;
-	justify-content: space-evenly;
-}
-
-
-
-.nodeLv {
-	border: 1px solid black;
-	margin: 2px;
-	width: 25px;
-	height: 25px;
-	line-height: 25px;
-}
 
 .start, .turn, .step {
 	width: 150px;

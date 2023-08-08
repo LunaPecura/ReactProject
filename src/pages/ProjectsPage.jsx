@@ -1,13 +1,15 @@
 import React from 'react'
-import AntApp from '../components/AntApp'
+import AntApp from '../apps/AntApp'
 
 const ProjectsPage = () => {
 
 	const n = 20
 	return (
-		<div className='ProjectsPage'>
+		<div className='Page Projects'>
 			<h1>Projects</h1>
-			<AntApp n={n} />
+			<div className='projectsPage content'>
+				<AntApp n={n} />
+			</div>
 		</div>
 	)
 }

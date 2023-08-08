@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Ant from '../functions&data/AntClass'
 import AntBoard from './AntBoard';
-import updatedData from '../functions&data/HelperFunctions'
+import updatedData from '../js-classes/HelperFunctions'
 
 
 

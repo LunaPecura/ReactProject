@@ -1,15 +1,15 @@
+
 import React from 'react'
-import LibraryContent from '../components/LibraryContent'
-import LibraryMenuBar from '../components/LibraryMenuBar'
+import BSTApp from '../apps/BSTApp'
 
 const LibraryPage = () => {
-	return (
-		<div className='LibraryPage'>
-			
-			<LibraryMenuBar></LibraryMenuBar>
-			<h1>Library</h1>
-			<LibraryContent></LibraryContent>
 
+	return (
+		<div className='Page Library'>	
+			<h1>Library</h1>
+			<div className='libraryPage content'>
+				<BSTApp />
+			</div>
 		</div>
 	)
 }
