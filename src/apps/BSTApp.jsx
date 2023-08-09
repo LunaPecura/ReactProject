@@ -1,6 +1,7 @@
 
 import React from 'react'
 import BST from '../js-classes/BSTClass'
+import Tree from '../components/Tree';
 
 
 const BSTApp = () => {
@@ -14,11 +15,11 @@ const BSTApp = () => {
 	// add another level to the tree with appropriate number & attributes of node divs
 	const addLevelToTree = (rowIndex) => {
 		currentTreeHeight++;
-		const margin = currentTreeHeight < 6 ? 5 : 1;
+		const margin = 20 - 2*currentTreeHeight;
 		let acc = "";
 		for(let j=0; j<2**rowIndex; j++) {
 			acc += `<div class='nodeDiv' id='nodeDiv${rowIndex}${j}' 
-					style='width:${25-rowIndex*rowIndex/2}px;height:${25-rowIndex*rowIndex/2}px;margin:${margin}px'></div>`; }
+					style='width:0px;height:1px;margin:${margin}px'></div>`; }
 		const newDiv = `<div class='treeDivRow' id='treeDivRow${rowIndex}'>${acc}</div>`
 		document.querySelector('#myTree').innerHTML += newDiv;
 	}
@@ -43,22 +44,30 @@ const BSTApp = () => {
 		document.querySelector(`#ballpitDiv${n}`).setAttribute("style", "color:white;opacity:50%")
 		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).innerHTML = n;
 		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).setAttribute("style", 
-			`background-color:${colors[n]};border-radius:50%;
-			width:${25-rowIndex*rowIndex/2}px;height:${25-rowIndex*rowIndex/2}px`);
+			`background-color:${colors[n]}; border-radius:50%;`);
 	}
 	
 	return (
 		<div className='BSTApp'>
-			<div>...in progress...</div>
+			{/* <div>...in progress...</div> */}
 			<h2>DIY Binary Search Tree</h2>
+
+
+
+			<div className='appContent'>
+
+
 
 			<button className='BST-startButton' onClick={startTree}>
 				Plant A Binary Search Tree
 			</button>
 
+			<div className='Tree' id='myTree'>
+				{/* WILL BE FILLED IN PROGRAMATICALLY */}
+			</div>
 
 			<div className='ballpit hidden'>
-				<div style={{display: 'flex'}}>
+				<div style={{display: 'flex', flexDirection: 'row'}}>
 				<div className='nodeDiv ballpitDiv' id='ballpitDiv0' onClick={addNode(0)}>0</div>
 				<div className='nodeDiv ballpitDiv' id='ballpitDiv1' onClick={addNode(1)}>1</div>
 				<div className='nodeDiv ballpitDiv' id='ballpitDiv2' onClick={addNode(2)}>2</div>
@@ -72,9 +81,14 @@ const BSTApp = () => {
 				</div>
 			</div>
 
-			<div className='treeDiv' id='myTree'>
-				{/* WILL BE FILLED IN PROGRAMATICALLY */}
+
+
+
 			</div>
+
+		
+
+			{/* <Tree></Tree> */}
 		</div>
 	)
 }

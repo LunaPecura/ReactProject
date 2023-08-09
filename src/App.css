@@ -5,7 +5,7 @@
 	background-color: #efefef;
 	text-align: center;
 	border: solid gray;
-	margin: 10px;
+	/* margin: 10px; */
 	padding: 5px;
 	font-family: 'Cambria';
 	border-radius: 5px;
@@ -61,14 +61,26 @@
 /* Apps *****************************************************************************************/
 
 .AntApp, .BSTApp {
-	padding: 20px;
+	/* padding: 10px; */
 	margin: 5px;
 	border-radius: 20px;
-	border: 3px solid gray;
+	border: 2px solid gray;
+}
+
+.appContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* border: solid red; */
 }
 
 .AntApp {
 	width: 350px;
+}
+
+.BSTApp {
+	
+	border-width: 3px;
 }
 
 .BST-startButton {
@@ -90,21 +102,40 @@
 }
 
 
+/* Reusable components *************************************************************************/
 
-
-.todo {
+.Tree {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-	border: 2px solid gray;
-	height: 300px;
-	width: 250px;
-	margin: 15px 10px;
-	font-size: 25px;
-	font-weight: bold;
-	background-color: white;
-	opacity: 50%;
+	align-items: center;
+	/* border: solid 2px seagreen; */
+	padding: 15px;
+	margin: 5px;
+	min-height: 300px;
 }
+
+.nodeDiv {
+	border: 1px solid black;
+	margin: 5px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	cursor: pointer;
+}
+
+.treeDivRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	border: 2px solid darkseagreen;
+	padding: 5px;
+	margin: 5px;
+	/* margin-top: 20px;
+	margin-bottom: 20px; */
+}
+
 
 
 .Board, .AntBoard {
@@ -130,30 +161,15 @@
 
 
 
-.tree {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.ballpit { /* contains a list of nodeDivs */
+	/* display: flex; */
+	/* justify-content: space-around; */
 	/* border: solid 2px seagreen; */
 	padding: 15px;
 	margin: 5px;
-}
-
-.nodeDiv {
-	border: 1px solid black;
-	margin: 5px;
-	width: 25px;
-	height: 25px;
-	line-height: 25px;
-	cursor: pointer;
-}
-
-.ballpit { /* contains a list of nodeDivs */
-	display: flex;
-	justify-content: space-around;
-	border: solid 2px seagreen;
-	padding: 15px;
-	margin: 5px;
+	/* background-color: black; */
+	border-top: 2px solid black;
+	/* border: solid orange; */
 }
 
 #ballpitDiv0 { background-color: darkred; }
@@ -170,42 +186,41 @@
 .ballpitDiv {
 	color: black;
 	font-weight: bold;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	font-size: 25px;
+	border-radius: 5px;
 	
 } .ballpitDiv:hover {
-	border-width: 3px;
+	border-width: 2px;
 	border-color: white;
 	color: white;
 	
 }
 
-#myTree {
+
+
+
+
+
+
+
+
+
+.todo {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	/* border: solid 2px seagreen; */
-	padding: 15px;
-	margin: 5px;
-	/* font-size: 25px;
-	font-weight: bold; */
+	justify-content: space-evenly;
+	border: 2px solid gray;
+	height: 300px;
+	width: 250px;
+	margin: 15px 10px;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: white;
+	opacity: 50%;
 }
-
-.treeDivRow {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	width: fit-content;
-	border: 2px solid darkseagreen;
-	padding: 5px;
-	margin: 5px;
-	/* margin-top: 20px;
-	margin-bottom: 20px; */
-}
-
-
-
-
-
 
 
 
