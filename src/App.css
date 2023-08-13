@@ -4,8 +4,6 @@
 .App {
 	background-color: #efefef;
 	text-align: center;
-	border: solid gray;
-	/* margin: 10px; */
 	padding: 5px;
 	font-family: 'Cambria';
 	border-radius: 5px;
@@ -13,24 +11,24 @@
 
 .NavBar {
 	display: flex;
-	justify-content: space-evenly;
-	padding: 10px;
-	margin: 5px;
-	/* border: 3px solid rebeccapurple; */
-	border-radius: 3px;
+	justify-content: space-around;
+	padding-bottom: 5px;
+	border-bottom: 3px solid rebeccapurple;
 }
 
 .NavBarItem {
-	border: 2px solid gray;
 	padding: 5px 10px;
-	font-size: 20px;
+	font-size: 15px;
+	color: gray;
 	background-color: lightgray;
 	cursor: pointer;
 	border-radius: 8px;
-	width: 100px;
+	width: 150px;
 	font-weight: bold;
 } .NavBarItem:hover {
-	background-color: rebeccapurple; }
+	background-color: rebeccapurple; 
+	color: white;
+}
 
 
 /* Pages ****************************************************************************************/
@@ -42,7 +40,6 @@
 	align-items: center;
 	padding-bottom: 100px;
 	margin: 5px;
-	/* border: 3px solid navy; */
 	border-radius: 3px;
 }
 
@@ -60,33 +57,48 @@
 
 /* Apps *****************************************************************************************/
 
-.AntApp, .BSTApp {
-	/* padding: 10px; */
+.appPreview {
+	min-width: 300px;
+	padding: 25px;
 	margin: 5px;
-	border-radius: 20px;
-	border: 2px solid gray;
+	border-radius: 25px;
+	border: 2px solid darkgray;
+	background-color: whitesmoke;
+}
+
+.AntApp {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	width: 350px;
+}
+
+.BSTApp {	
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.appHeader {
+
+}
+
+.pathDiv {
+	width: 100%;
+	text-align: right;
+	font-size: small;
+	background-color: whitesmoke;
+	padding: 5px;
 }
 
 .appContent {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	/* border: solid red; */
 }
 
-.AntApp {
-	width: 350px;
-}
 
-.BSTApp {
-	
-	border-width: 3px;
-}
 
-.BST-startButton {
+.BSTApp-startButton {
 	height: 50px;
-	background-color: seagreen;
-	/* color: white; */
 	opacity: 50%;
 	font-size: 20px;
 	font-weight: bold;
@@ -94,17 +106,35 @@
 	margin-top: 10px;
 	padding: 0px 10px;
 	cursor: pointer;
-	border: 1px solid gray;
-} .BST-startButton:hover {
+	border: solid gray;
+	/* width: 250px; */
+} .BSTApp-startButton:hover {
 	opacity: 80%;
-	border-color: black;
-	color: whitesmoke;
+	border-color: seagreen;
+	color: seagreen;
+}
+
+.BSTApp-resetButton {
+	height: 50px;
+	opacity: 50%;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	margin-top: 10px;
+	padding: 0px 10px;
+	cursor: pointer;
+	border: solid gray;
+	/* width: 250px; */
+} .BSTApp-resetButton:hover {
+	opacity: 80%;
+	border-color: seagreen;
+	color: seagreen;
 }
 
 
 /* Reusable components *************************************************************************/
 
-.Tree {
+.BSTree, .Tree, .treeDiv {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -114,13 +144,13 @@
 	min-height: 300px;
 }
 
-.nodeDiv {
+.NodeDiv {
 	border: 1px solid black;
 	margin: 5px;
 	width: 25px;
 	height: 25px;
 	line-height: 25px;
-	cursor: pointer;
+	border-radius: 50%;
 }
 
 .treeDivRow {
@@ -132,8 +162,6 @@
 	border: 2px solid darkseagreen;
 	padding: 5px;
 	margin: 5px;
-	/* margin-top: 20px;
-	margin-bottom: 20px; */
 }
 
 
@@ -161,29 +189,17 @@
 
 
 
-.ballpit { /* contains a list of nodeDivs */
-	/* display: flex; */
-	/* justify-content: space-around; */
-	/* border: solid 2px seagreen; */
+.BSTApp-buttonPanel { /* contains a list of nodeDivs */
+	display: flex;
+	flex-direction: row;
+
 	padding: 15px;
 	margin: 5px;
-	/* background-color: black; */
 	border-top: 2px solid black;
 	/* border: solid orange; */
 }
 
-#ballpitDiv0 { background-color: darkred; }
-#ballpitDiv1 { background-color: red; }
-#ballpitDiv2 { background-color: orange; }
-#ballpitDiv3 { background-color: yellow; }
-#ballpitDiv4 { background-color: greenyellow; }
-#ballpitDiv5 { background-color: green; }
-#ballpitDiv6 { background-color: skyblue; }
-#ballpitDiv7 { background-color: blue; }
-#ballpitDiv8 { background-color: purple; }
-#ballpitDiv9 { background-color: palevioletred; }
-
-.ballpitDiv {
+.NodeButton {
 	color: black;
 	font-weight: bold;
 	height: 50px;
@@ -191,12 +207,16 @@
 	line-height: 50px;
 	font-size: 25px;
 	border-radius: 5px;
-	
-} .ballpitDiv:hover {
+
+	border: 1px solid black;
+	margin: 5px;
+	cursor: pointer;
+} .NodeButton:hover {
 	border-width: 2px;
 	border-color: white;
 	color: white;
-	
+} .NodeButton:disabled {
+	opacity: 50%;
 }
 
 

@@ -7,9 +7,12 @@ const ProjectsPage = () => {
 
 	return (
 		<div className='Page Projects'>
-			<h1>Projects</h1>
+			<div className='pathDiv'><code>/Projects</code></div>
 			<div className='projectsPage content'>
-				<AntApp n={n} />
+
+				<div className='appPreview'>
+					<AntApp n={n} />
+				</div>
 
 				<div className='todo'>
 					<div>TO DO</div>

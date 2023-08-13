@@ -6,9 +6,11 @@ const LibraryPage = () => {
 
 	return (
 		<div className='Page Library'>	
-			<h1>Library</h1>
+			<div className='pathDiv'><code>/Library</code></div>
 			<div className='libraryPage content'>
-				<BSTApp />
+				<div className='appPreview'> 
+					<BSTApp />
+				</div>
 			</div>
 		</div>
 	)

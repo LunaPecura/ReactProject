@@ -1,96 +1,86 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import BST from '../js-classes/BSTClass'
-import Tree from '../components/Tree';
+import NodeButton from '../components/NodeButton'
+import { hideElement, showElement, disableButton, enableButton, sequence } from '../js-classes/HelperFunctions'
+import Tree from '../components/Tree'
+
 
 
 const BSTApp = () => {
 
-	let myTree;
-	let currentTreeHeight;
+	const colors = ["red", "darkorange", "gold", "limegreen", "seagreen", "darkcyan", "cornflowerblue", "mediumslateblue", "darkorchid", "palevioletred"];
+	const myTree = new BST();
+	const [nodeList, setNodeList] = useState([]);
+	/* ------------------------------------------------------------------------- */
+	const appHeader = () => document.querySelector(".appHeader")
+	const pathDiv = () => document.querySelector(".pathDiv")
+	const msgDiv = () => document.querySelector(".inProgressMsg")
+	const buttonPanel = () => document.querySelector(".BSTApp-buttonPanel");
+	const startButton = () => document.querySelector(".BSTApp-startButton");
+	const resetButton = () => document.querySelector(".BSTApp-resetButton");
+	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
+	
+	
 
-	const colors = ["darkred", "red", "orange", "yellow", "greenyellow", 
-					"green", "skyblue", "blue", "purple", "palevioletred"]
+	const makeButtonPanel = n => sequence(n).map( i => {
+		return <NodeButton id={i} fn={addNode} color={colors[i]} key={i} />
+	})
 
-	// add another level to the tree with appropriate number & attributes of node divs
-	const addLevelToTree = (rowIndex) => {
-		currentTreeHeight++;
-		const margin = 20 - 2*currentTreeHeight;
-		let acc = "";
-		for(let j=0; j<2**rowIndex; j++) {
-			acc += `<div class='nodeDiv' id='nodeDiv${rowIndex}${j}' 
-					style='width:0px;height:1px;margin:${margin}px'></div>`; }
-		const newDiv = `<div class='treeDivRow' id='treeDivRow${rowIndex}'>${acc}</div>`
-		document.querySelector('#myTree').innerHTML += newDiv;
+	const start = () => {
+		hideElement(startButton());
+		hideElement(appHeader());
+		hideElement(msgDiv());
+		showElement(pathDiv());
+		showElement(buttonPanel());
+		showElement(resetButton());
+
 	}
 
-	// initialize upon user button click
-	const startTree = () => {
-		document.querySelector(".BST-startButton").classList.add("hidden");
-		document.querySelector(".ballpit").classList.remove("hidden");
-		myTree = new BST("", 0, 0);
-		currentTreeHeight = 0;
+	const reset = () => {
+		nodeList.forEach(k => enableButton(nodeButton(k)));
+		setNodeList([]);
 	}
 
-	// add node of value n to the BST
-	const addNode = n => () => {
-		if(myTree.containsValue(n)) { return; } // do nothing if node is already present
-		myTree.addValue(n);
-		const [rowIndex, colIndex] = myTree.getIndex(n);
+	const addNode = k => () => {
+		disableButton(nodeButton(k));
+		myTree.addValue(k);
+		setNodeList([...nodeList, k]);
+	}
 
-		// adjust screen
-		if(rowIndex === currentTreeHeight) { addLevelToTree(rowIndex); }
-		document.querySelector(`#ballpitDiv${n}`).removeAttribute("onclick");
-		document.querySelector(`#ballpitDiv${n}`).setAttribute("style", "color:white;opacity:50%")
-		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).innerHTML = n;
-		document.querySelector(`#nodeDiv${rowIndex}${colIndex}`).setAttribute("style", 
-			`background-color:${colors[n]}; border-radius:50%;`);
+	const removeNode = k => () => {
+		console.log("remove node");
+		myTree.removeValue(k);
+		nodeList.splice(nodeList.indexOf(k), 1);
+		setNodeList([...nodeList]);
 	}
 	
+
+
 	return (
 		<div className='BSTApp'>
-			{/* <div>...in progress...</div> */}
-			<h2>DIY Binary Search Tree</h2>
 
-
-
+			<div className='inProgressMsg'>...in progress...</div>
+			<h2 className='appHeader'>Binary Search Trees</h2>
+			<div className='pathDiv hidden'><code>/Binary Search Trees</code></div>
 			<div className='appContent'>
 
+				<Tree nodes={nodeList} colors={colors}/>
+				
+				<button className='BSTApp-startButton' onClick={start} /* onMouseOver={} */>
+					Plant A Tree
+				</button>
 
-
-			<button className='BST-startButton' onClick={startTree}>
-				Plant A Binary Search Tree
-			</button>
-
-			<div className='Tree' id='myTree'>
-				{/* WILL BE FILLED IN PROGRAMATICALLY */}
-			</div>
-
-			<div className='ballpit hidden'>
-				<div style={{display: 'flex', flexDirection: 'row'}}>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv0' onClick={addNode(0)}>0</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv1' onClick={addNode(1)}>1</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv2' onClick={addNode(2)}>2</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv3' onClick={addNode(3)}>3</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv4' onClick={addNode(4)}>4</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv5' onClick={addNode(5)}>5</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv6' onClick={addNode(6)}>6</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv7' onClick={addNode(7)}>7</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv8' onClick={addNode(8)}>8</div>
-				<div className='nodeDiv ballpitDiv' id='ballpitDiv9' onClick={addNode(9)}>9</div>
+				<div className='BSTApp-buttonPanel hidden'>
+					{ makeButtonPanel(10) }
 				</div>
-			</div>
 
+				<button className='BSTApp-resetButton hidden' onClick={reset} /* onMouseOver={} */>
+					Reset Tree
+				</button>
 
-
-
-			</div>
-
-		
-
-			{/* <Tree></Tree> */}
+			</div>	
 		</div>
-	)
-}
+)}
 
 export default BSTApp

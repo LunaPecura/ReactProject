@@ -23,6 +23,7 @@ const ConnectPage = () => {
 	return (
 		<div className='Page Connect'>
 			{/* <h1>Connect</h1> */}
+			<div className='pathDiv'><code>/Connect</code></div>
 
 			<h1>NASA's aSTRONOMY pICTURE oF <small><small><small>THE</small></small></small> dAY (apod)</h1>
 			<h2><code>[API_requirement === fullfilled;]</code></h2>

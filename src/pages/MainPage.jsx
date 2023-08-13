@@ -4,7 +4,7 @@ const MainPage = () => {
 
 	return (
 		<div className='Page Main'>
-			<h1>Main</h1>
+			<div className='pathDiv'><code>/Main</code></div>
 			<div className='mainPage content'>
 
 				<div className='todo'>
