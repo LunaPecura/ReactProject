@@ -19,17 +19,15 @@ const TreeLevel = (props) => {
 		const width = divIsEmpty ? 0 : 25;
 		const height = divIsEmpty ? 1 : 25;
 		const onClickFn = divIsEmpty ? () => {} : props.fn(value);
-		const margin = 20 - 2*props.i;
-		console.log(margin);
-
-		return <NodeDiv v={value} c={color} i={props.i} j={j} key={2**props.i + j} 
-						w={width} h={height} m={margin} f={onClickFn} />;
+		const margin = props.i < 6 ? 20-3*props.i : 9-props.i;
 		
+		return <NodeDiv v={value} c={color} i={props.i} j={j} key={2**props.i + j} 
+						w={width} h={height} m={margin} f={onClickFn} />;	
 	});
 
 
 	return (
-		<div className='TreeLevel treeDivRow' id={`treeDivRow${props.i}`}>
+		<div className='TreeLevel' id={`treeLevel${props.i}`}>
 			{nodeDivs}
 		</div>
 	)

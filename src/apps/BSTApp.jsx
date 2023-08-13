@@ -13,19 +13,19 @@ const BSTApp = () => {
 	const colors = ["red", "darkorange", "gold", "limegreen", "seagreen", "darkcyan", "cornflowerblue", "mediumslateblue", "darkorchid", "palevioletred"];
 	const myTree = new BST();
 	const [nodeList, setNodeList] = useState([]);
-	const [nodeSupply, setNodeSupply] = useState(sequence(n));
+	// const [nodeSupply, setNodeSupply] = useState(sequence(n));
 	/* ------------------------------------------------------------------------- */
 	const appHeader = () => document.querySelector(".appHeader")
 	const pathDiv = () => document.querySelector(".pathDiv")
 	const msgDiv = () => document.querySelector(".inProgressMsg")
 	const buttonPanel = () => document.querySelector(".BSTApp-buttonPanel");
-	const startButton = () => document.querySelector(".BSTApp-startButton");
-	const resetButton = () => document.querySelector(".BSTApp-resetButton");
-	const randomButton = () => document.querySelector(".BSTApp-randomButton")
+	
+	const startButton = () => document.querySelector("#BSTApp-startButton");
+	const resetButton = () => document.querySelector("#BSTApp-resetButton");
+	const randomButton = () => document.querySelector("#BSTApp-randomButton")
 	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
 	
 	
-
 	const makeButtonPanel = n => sequence(n).map( i => {
 		return <NodeButton id={i} fn={addNode} color={colors[i]} key={i} />
 	})
@@ -43,7 +43,7 @@ const BSTApp = () => {
 	const reset = () => {
 		nodeList.forEach(k => enableButton(nodeButton(k)));
 		setNodeList([]);
-		setNodeSupply(sequence(n))
+		// setNodeSupply(sequence(n))
 	}
 
 	const random = () => {
@@ -56,14 +56,15 @@ const BSTApp = () => {
 			randomize(array); // attn: recursion
 		}
 
-		randomize(nodeSupply);
+		// randomize(nodeSupply);
+		randomize(sequence(n));
 		setNodeList(shuffledNodes);
 	}
 
 	const addNode = k => () => {
 		disableButton(nodeButton(k));
 		myTree.addValue(k);
-		nodeSupply.splice(nodeSupply.indexOf(k), 1);
+		// nodeSupply.splice(nodeSupply.indexOf(k), 1);
 		setNodeList([...nodeList, k]);
 	}
 
@@ -86,7 +87,7 @@ const BSTApp = () => {
 
 				<Tree nodes={nodeList} colors={colors} fn={removeNode}/>
 				
-				<button className='BSTApp-startButton' onClick={start} /* onMouseOver={} */>
+				<button className='BSTApp-button' id='BSTApp-startButton' onClick={start} /* onMouseOver={} */>
 					Plant A Tree
 				</button>
 
@@ -94,11 +95,11 @@ const BSTApp = () => {
 					{ makeButtonPanel(n) }
 				</div>
 
-				<button className='BSTApp-resetButton hidden' onClick={reset} /* onMouseOver={} */>
+				<button className='BSTApp-button hidden' id='BSTApp-resetButton' onClick={reset} /* onMouseOver={} */>
 					Reset Tree
 				</button>
 
-				<button className='BSTApp-randomButton hidden' onClick={random} /* onMouseOver={} */>
+				<button className='BSTApp-button hidden' id='BSTApp-randomButton' onClick={random} /* onMouseOver={} */>
 					Random Tree
 				</button>
 

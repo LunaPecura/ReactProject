@@ -16,14 +16,12 @@ class BST {
 		this.path = path; 
 		this.rowIndex = i;
 		this.colIndex = j;
-		return this;
 	}
 
 
 /* CLASS METHODS ***********************************************************************************/
 
 	addValue(newValue) {
-		// console.log(newValue)
 		if(this.value === null) { // instantiate the new (potential) subtrees
 			this.value = newValue;
 			this.left = new BST(this.path+'L', this.rowIndex+1, 2*this.colIndex);
@@ -62,27 +60,20 @@ class BST {
 		return this.getIndex(value).reduce((i, j) => `${i}-${j}`)
 	}
 
-	valueAtIndex(i, j) {
+	valueAtIndex(i, j) { // not tested yet
 		if(i < this.rowIndex) {
-			if(j < 2*(this.colIndex+1)) { console.log("left)"); return this.left.valueAtIndex(i, j) }
-			else { console.log("right"); return this.right.valueAtIndex(i, j) }
+			if(j < 2*(this.colIndex+1)) { return this.left.valueAtIndex(i, j) }
+			else { return this.right.valueAtIndex(i, j) }
 		} else { return this.value }
 	}
 	
 	height() {
 		if(this.value === null) { return 0 }
 		else { return Math.max(this.left.height(), this.right.height()) + 1 }
-		// return this.values.length;
 	}
 
-	toMatrix() {
-		return Array(this.height()).fill(null).map( (_,i) => Array(2**i).fill(null) )
-	}
-
+	toMatrix() { return Array(this.height()).fill(null).map( (_,i) => Array(2**i).fill(null) ) }
 	addValues(valueArray) { valueArray.forEach(value => { this.addValue(value); }); }
 }
 
 export default BST;
-
-
-

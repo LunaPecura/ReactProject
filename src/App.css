@@ -1,5 +1,5 @@
 
-/* Top Level ************************************************************************************/
+/* Top Level Components *************************************************************************/
 
 .App {
 	background-color: #efefef;
@@ -31,20 +31,18 @@
 }
 
 
-/* Pages ****************************************************************************************/
 
-/* ==> use w/ 'Main', 'Projects', 'Library', 'Connect' */
-.Page { 
+/* Pages: General Components ********************************************************************/
+
+.Page { /* ==> use w/ 'Main', 'Projects', 'Library', 'Connect' */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 100px;
 	margin: 5px;
-	border-radius: 3px;
 }
 
-/* ==> use w/ 'mainPage', 'projectsPage', 'libraryPage', 'connectPage' */
-.content {
+.content { /* ==> use w/ 'mainPage', 'projectsPage', 'libraryPage', 'connectPage' */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -55,7 +53,8 @@
 }
 
 
-/* Apps *****************************************************************************************/
+
+/* Apps: General Classes ************************************************************************/
 
 .appPreview {
 	min-width: 300px;
@@ -66,20 +65,7 @@
 	background-color: whitesmoke;
 }
 
-.AntApp {
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-	width: 350px;
-}
-
-.BSTApp {	
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
-
-.appHeader {
-
-}
+/* .appHeader { } */
 
 .pathDiv {
 	width: 100%;
@@ -93,96 +79,101 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 }
 
 
 
-.BSTApp-startButton {
-	height: 50px;
-	opacity: 50%;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 50px;
-	margin-top: 10px;
-	padding: 0px 10px;
-	cursor: pointer;
-	border: solid gray;
-	/* width: 250px; */
-} .BSTApp-startButton:hover {
-	opacity: 80%;
-	border-color: seagreen;
-	color: seagreen;
+/* BST Components & Classes ********************************************************************/
+
+.BSTApp {	
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
-.BSTApp-resetButton {
-	height: 50px;
-	opacity: 50%;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 50px;
-	margin-top: 10px;
-	padding: 0px 10px;
-	cursor: pointer;
-	border: solid gray;
-	/* width: 250px; */
-} .BSTApp-resetButton:hover {
-	opacity: 80%;
-	border-color: seagreen;
-	color: seagreen;
-}
-
-.BSTApp-randomButton {
-	height: 50px;
-	opacity: 50%;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 50px;
-	margin-top: 10px;
-	padding: 0px 10px;
-	cursor: pointer;
-	border: solid gray;
-	/* width: 250px; */
-} .BSTApp-randomButton:hover {
-	opacity: 80%;
-	border-color: seagreen;
-	color: seagreen;
-}
-
-
-/* Reusable components *************************************************************************/
-
-.BSTree, .Tree, .treeDiv {
+.Tree {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* border: solid 2px seagreen; */
 	padding: 15px;
 	margin: 5px;
 	min-height: 300px;
 }
 
+.TreeLevel {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	padding: 5px;
+	margin: 5px;
+	border: 2px solid darkseagreen;
+}
+
 .NodeDiv {
-	border: 1px solid black;
 	margin: 5px;
 	width: 25px;
 	height: 25px;
 	line-height: 25px;
 	border-radius: 50%;
 	cursor: pointer;
+	border: 1px solid black;
 }
 
-.treeDivRow {
+.NodeButton {
+	color: black;
+	font-weight: bold;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	font-size: 25px;
+	border-radius: 5px;
+	margin: 5px;
+	cursor: pointer;
+	border: 1px solid black;
+} .NodeButton:hover {
+	border-width: 2px;
+	border-color: white;
+	color: white;
+} .NodeButton:disabled {
+	opacity: 50%;
+}
+
+.BSTApp-buttonPanel { 
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	width: fit-content;
-	border: 2px solid darkseagreen;
-	padding: 5px;
+	padding: 15px;
 	margin: 5px;
+	border-top: 2px solid black;
+}
+
+.BSTApp-button {
+	height: 50px;
+	opacity: 50%;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	margin-top: 10px;
+	padding: 0px 10px;
+	cursor: pointer;
+	border: solid gray;
+	width: 90%;
+} .BSTApp-button:hover{
+	opacity: 80%;
+	border-color: seagreen;
+	color: seagreen;
 }
 
 
+
+/* Langton's Ant: Components & Classes *********************************************************/
+
+.AntApp {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	width: 350px;
+}
 
 .Board, .AntBoard {
 	border: 2px solid slateblue;
@@ -204,66 +195,6 @@
 	border-color: orangered;
 }
 
-
-
-
-.BSTApp-buttonPanel { /* contains a list of nodeDivs */
-	display: flex;
-	flex-direction: row;
-
-	padding: 15px;
-	margin: 5px;
-	border-top: 2px solid black;
-	/* border: solid orange; */
-}
-
-.NodeButton {
-	color: black;
-	font-weight: bold;
-	height: 50px;
-	width: 50px;
-	line-height: 50px;
-	font-size: 25px;
-	border-radius: 5px;
-
-	border: 1px solid black;
-	margin: 5px;
-	cursor: pointer;
-} .NodeButton:hover {
-	border-width: 2px;
-	border-color: white;
-	color: white;
-} .NodeButton:disabled {
-	opacity: 50%;
-}
-
-
-
-
-
-
-
-
-
-
-.todo {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	border: 2px solid gray;
-	height: 300px;
-	width: 250px;
-	margin: 15px 10px;
-	font-size: 25px;
-	font-weight: bold;
-	background-color: white;
-	opacity: 50%;
-}
-
-
-
-
-
 .start, .turn, .step {
 	width: 150px;
 	height: 50px;
@@ -282,6 +213,25 @@
 	opacity: 75%;
 	color: black;
 }
+
+
+
+/* Miscellaneous Classes ***********************************************************************/
+
+.todo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	border: 2px solid gray;
+	height: 300px;
+	width: 250px;
+	margin: 15px 10px;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: white;
+	opacity: 50%;
+}
+
 
 
 a {
