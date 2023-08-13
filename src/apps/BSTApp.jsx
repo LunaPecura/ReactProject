@@ -26,7 +26,7 @@ const BSTApp = () => {
 	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
 	
 	
-	const makeButtonPanel = n => sequence(n).map( i => {
+	const makeNodeButtons = n => sequence(n).map( i => {
 		return <NodeButton id={i} fn={addNode} color={colors[i]} key={i} />
 	})
 
@@ -36,8 +36,8 @@ const BSTApp = () => {
 		hideElement(msgDiv());
 		showElement(pathDiv());
 		showElement(buttonPanel());
-		showElement(resetButton());
-		showElement(randomButton());
+		// showElement(resetButton());
+		// showElement(randomButton());
 	}
 
 	const reset = () => {
@@ -92,16 +92,16 @@ const BSTApp = () => {
 				</button>
 
 				<div className='BSTApp-buttonPanel hidden'>
-					{ makeButtonPanel(n) }
+					<div style={{display: 'flex'}}>{ makeNodeButtons(n) }</div>
+					<button className='BSTApp-button' id='BSTApp-resetButton' onClick={reset} /* onMouseOver={} */>
+						Reset Tree
+					</button>
+					<button className='BSTApp-button' id='BSTApp-randomButton' onClick={random} /* onMouseOver={} */>
+						Random Tree
+					</button>
 				</div>
 
-				<button className='BSTApp-button hidden' id='BSTApp-resetButton' onClick={reset} /* onMouseOver={} */>
-					Reset Tree
-				</button>
-
-				<button className='BSTApp-button hidden' id='BSTApp-randomButton' onClick={random} /* onMouseOver={} */>
-					Random Tree
-				</button>
+				
 
 			</div>	
 		</div>
