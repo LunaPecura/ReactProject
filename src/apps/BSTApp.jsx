@@ -21,8 +21,6 @@ const BSTApp = () => {
 	const buttonPanel = () => document.querySelector(".BSTApp-buttonPanel");
 	
 	const startButton = () => document.querySelector("#BSTApp-startButton");
-	const resetButton = () => document.querySelector("#BSTApp-resetButton");
-	const randomButton = () => document.querySelector("#BSTApp-randomButton")
 	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
 	
 	
@@ -36,8 +34,6 @@ const BSTApp = () => {
 		hideElement(msgDiv());
 		showElement(pathDiv());
 		showElement(buttonPanel());
-		// showElement(resetButton());
-		// showElement(randomButton());
 	}
 
 	const reset = () => {
