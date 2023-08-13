@@ -9,12 +9,12 @@ const Tree = (props) => {
 	tree.addValues(props.nodes);
 
 	const treeLevels = sequence(tree.height()).map( i => {
-		return <TreeLevel nodes={props.nodes} colors={props.colors} i={i} key={i} />
+		return <TreeLevel nodes={props.nodes} colors={props.colors} fn={props.fn} i={i} key={i} />
 	})
 
 
 	return (
-		<div className='Tree' nodes={props.nodes} colors={props.colors}>
+		<div className='Tree'>
 			{ treeLevels }
 		</div>
 	)

@@ -131,6 +131,23 @@
 	color: seagreen;
 }
 
+.BSTApp-randomButton {
+	height: 50px;
+	opacity: 50%;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	margin-top: 10px;
+	padding: 0px 10px;
+	cursor: pointer;
+	border: solid gray;
+	/* width: 250px; */
+} .BSTApp-randomButton:hover {
+	opacity: 80%;
+	border-color: seagreen;
+	color: seagreen;
+}
+
 
 /* Reusable components *************************************************************************/
 
@@ -151,6 +168,7 @@
 	height: 25px;
 	line-height: 25px;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .treeDivRow {

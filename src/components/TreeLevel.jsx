@@ -18,9 +18,12 @@ const TreeLevel = (props) => {
 		const color = divIsEmpty ? 'inherit' : props.colors[value];
 		const width = divIsEmpty ? 0 : 25;
 		const height = divIsEmpty ? 1 : 25;
+		const onClickFn = divIsEmpty ? () => {} : props.fn(value);
+		const margin = 20 - 2*props.i;
+		console.log(margin);
 
 		return <NodeDiv v={value} c={color} i={props.i} j={j} key={2**props.i + j} 
-						w={width} h={height} />;
+						w={width} h={height} m={margin} f={onClickFn} />;
 		
 	});
 
