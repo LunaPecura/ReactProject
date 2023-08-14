@@ -17,4 +17,15 @@ const enableButton = button => { button.removeAttribute('disabled'); }
 
 const sequence = n => { return Array(n).fill().map((_, i) => i) }
 
-module.exports = { updatedData, hideElement, showElement, disableButton, enableButton, sequence }
+const shuffle = array => {
+	const step = (array, acc) => {
+		if(array.length === 0) { return acc; }
+		const randomIndex = Math.floor(Math.random() * array.length)
+		const randomValue = array.splice(randomIndex, 1)
+		return step(array, [...acc, randomValue]) }
+	return step([...array], []);
+}
+
+module.exports = {	updatedData, 
+					hideElement, showElement, disableButton, enableButton, 
+					sequence, shuffle }

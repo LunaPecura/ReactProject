@@ -108,10 +108,12 @@
 	width: fit-content;
 	padding: 5px;
 	margin: 5px;
-	border: 2px solid darkseagreen;
+	/* border: 2px solid darkseagreen; */
 }
 
 .NodeDiv {
+	font-weight: bold;
+	font-size: 20px;
 	margin: 5px;
 	width: 25px;
 	height: 25px;
@@ -119,6 +121,10 @@
 	border-radius: 50%;
 	cursor: pointer;
 	border: 1px solid black;
+} .NodeDiv:hover {
+	border-width: 2px;
+	border-color: white;
+	color: white;
 }
 
 .NodeButton {
@@ -137,6 +143,9 @@
 	border-color: white;
 	color: white;
 } .NodeButton:disabled {
+	border-width: 2px;
+	border-color: white;
+	color: darkgray;
 	opacity: 50%;
 }
 

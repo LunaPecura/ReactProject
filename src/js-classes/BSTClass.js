@@ -8,11 +8,11 @@ class BST {
 	path; // string of 'L's and 'R's indicating the path from the root node / BST
 	rowIndex; // row position i in the BST matrix
 	colIndex;  // column position j in the BST matrix
-	values; // integer list of all child values contains in this.BST
+	allValues; // integer list of all child values contains in this.BST
 
 	constructor(path="", i=0, j=0) { 
 		this.value = null; 
-		this.values = [];
+		this.allValues = [];
 		this.path = path; 
 		this.rowIndex = i;
 		this.colIndex = j;
@@ -21,39 +21,44 @@ class BST {
 
 /* CLASS METHODS ***********************************************************************************/
 
-	addValue(newValue) {
-		if(this.value === null) { // instantiate the new (potential) subtrees
-			this.value = newValue;
+	addValue(v) {
+
+		// found insertion point -- instantiate the new (potential) subtrees
+		if(this.value === null) { 
+			this.value = v;
 			this.left = new BST(this.path+'L', this.rowIndex+1, 2*this.colIndex);
 			this.right = new BST(this.path+'R', this.rowIndex+1, 2*this.colIndex+1); }
-		else if(newValue < this.value) { this.left.addValue(newValue); }
-		else if(newValue > this.value) { this.right.addValue(newValue); }
-		this.values.push(newValue);
+
+		// recursive calls to child trees
+		else if(v < this.value) { this.left.addValue(v); }
+		else if(v > this.value) { this.right.addValue(v); }
+
+		this.allValues.push(v);
 		return this;
 	}
 
-	removeValue(value) {
-		this.values.splice(this.values.indexOf(value), 1);
-		let newTree = new BST();
-		newTree.addValues(this.values);
-		return newTree;
+
+	removeValue(v) {
+		this.allValues.splice(this.allValues.indexOf(v), 1);
+		return (new BST()).addValues([...this.allValues]);
 	}
 
-	deepCopy() {
-		const copy = new BST();
-		return copy.addValues(this.values)
-	}
-
-	containsValue(value) {
+	containsValue(v) {
 		if(this.value === null) { return false; } 
-		else if(this.value === value) { return true; }
-		else { return this.left.containsValue(value) || this.right.containsValue(value) }
+		else if(v === this.value) { return true; }
+		else { return this.left.containsValue(v) || this.right.containsValue(v) }
 	}
 
-	getIndex(value) { // only call with values that are actually present
-		if(this.value === value) { return [this.rowIndex, this.colIndex]; }
-		else if(value < this.value) {  return this.left.getIndex(value) }
-		else if(value > this.value) { return this.right.getIndex(value) }
+	getIndex(v) { // only call with values that are actually present
+		if(v === this.value) { return [this.rowIndex, this.colIndex]; }
+		else if(v < this.value) {  return this.left.getIndex(v) }
+		else if(v > this.value) { return this.right.getIndex(v) }
+	}
+
+	pathToValue(v) {
+		if(v === this.value) { return this.path; }
+		else if(v < this.value) { return this.left.pathToValue(v); }
+		else if(v > this.value) { return this.right.pathToValue(v); }
 	}
 
 	getIndexString(value) { // returns the index as string of the form 'i-j'
@@ -72,8 +77,9 @@ class BST {
 		else { return Math.max(this.left.height(), this.right.height()) + 1 }
 	}
 
-	toMatrix() { return Array(this.height()).fill(null).map( (_,i) => Array(2**i).fill(null) ) }
-	addValues(valueArray) { valueArray.forEach(value => { this.addValue(value); }); }
+	// toMatrix() { return Array(this.height()).fill(null).map( (_,i) => Array(2**i).fill(null) ) }
+	deepCopy() { return (new BST()).addValues([...this.allValues]) }
+	addValues(valueArray) { valueArray.forEach(value => { this.addValue(value); }); return this; }
 }
 
 export default BST;
