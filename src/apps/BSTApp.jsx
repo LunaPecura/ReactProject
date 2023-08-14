@@ -10,12 +10,13 @@ import { hideElement, showElement, disableButton, enableButton, sequence, shuffl
 const BSTApp = () => {
 
 	const n = 10;
-	const colors = ["red", "darkorange", "gold", "limegreen", "seagreen", "darkcyan", "cornflowerblue", "mediumslateblue", "darkorchid", "palevioletred"];
+	const colors = ["firebrick", "orangered", "darkorange", "gold", "limegreen", "seagreen", "darkcyan", "cornflowerblue", "mediumpurple", "darkorchid"];
 	const [nodeList, setNodeList] = useState([]);
 	/* ------------------------------------------------------------------------- */
 	const appHeader = () => document.querySelector(".appHeader");
 	const pathDiv = () => document.querySelector("#BSTApp-path");
 	const msgDiv = () => document.querySelector(".inProgressMsg");
+	const treeDiv = () => document.querySelector('#treeWrapper')
 	const buttonPanel = () => document.querySelector(".BSTApp-buttonPanel");
 	const startButton = () => document.querySelector("#BSTApp-startButton");
 	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
@@ -31,6 +32,7 @@ const BSTApp = () => {
 		hideElement(msgDiv());
 		showElement(pathDiv());
 		showElement(buttonPanel());
+		showElement(treeDiv());
 	}
 
 	const reset = () => {
@@ -54,6 +56,9 @@ const BSTApp = () => {
 		setNodeList([...nodeList]);
 	}
 	
+	const watch = () => {
+		const id = setInterval(() => { random(); }, 1000);
+	}
 
 
 	return (
@@ -65,7 +70,9 @@ const BSTApp = () => {
 			
 			<div className='appContent'>
 
-				<Tree nodes={nodeList} colors={colors} fn={removeNode}/>
+				<span className='wrapper hidden' id='treeWrapper'>
+					<Tree nodes={nodeList} colors={colors} fn={removeNode}/>
+				</span>
 				
 				<button className='BSTApp-button' id='BSTApp-startButton' onClick={start} /* onMouseOver={} */>
 					Plant A Tree
@@ -73,11 +80,16 @@ const BSTApp = () => {
 
 				<div className='BSTApp-buttonPanel hidden'>
 					<div className='bundle' style={{display: 'flex'}}>{ makeNodeButtons(n) }</div>
-					<button className='BSTApp-button' id='BSTApp-resetButton' onClick={reset} /* onMouseOver={} */>
-						Reset Tree
-					</button>
-					<button className='BSTApp-button' id='BSTApp-randomButton' onClick={random} /* onMouseOver={} */>
-						Random Tree
+					<div className='bundle' style={{display: 'flex', width: '100%'}}>
+						<button className='BSTApp-button' id='BSTApp-resetButton' onClick={reset} /* onMouseOver={} */>
+							Reset
+						</button>
+						<button className='BSTApp-button' id='BSTApp-randomButton' onClick={random} /* onMouseOver={} */>
+							Random Tree
+						</button>
+					</div>
+					<button className='BSTApp-button' id='BSTApp-animateButton' onClick={watch} /* onMouseOver={} */>
+							Watch
 					</button>
 				</div>
 
