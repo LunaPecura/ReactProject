@@ -162,20 +162,35 @@
 }
 
 .BSTApp-button {
+	color: white;
+	border-radius: 5px;
+	background-color: black;
 	height: 50px;
-	opacity: 50%;
-	font-size: 20px;
+	opacity: 60%;
+	font-size: 15px;
 	font-weight: bold;
 	line-height: 50px;
-	margin-top: 10px;
+	margin: 1px;
 	padding: 0px 10px;
 	cursor: pointer;
-	border: solid gray;
+	/* border: solid white; */
 	width: 100%;
-} .BSTApp-button:hover{
-	opacity: 80%;
-	border-color: seagreen;
+} .BSTApp-button:hover {
+	opacity: 100%;
+	border: 3px solid seagreen;
 	color: seagreen;
+} .BSTApp-button:disabled {
+	opacity: 20%;
+	cursor: auto;
+}
+
+#BSTApp-zoomInButton, #BSTApp-zoomOutButton {
+	opacity: 20%;
+	cursor: auto;
+}
+
+#BSTApp-backButton, #BSTApp-forwardButton {
+	width: fit-content;
 }
 
 

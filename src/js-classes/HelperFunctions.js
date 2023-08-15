@@ -22,9 +22,9 @@ const shuffle = array => {
 		if(array.length === 0) { return acc; }
 		const randomIndex = Math.floor(Math.random() * array.length)
 		const randomValue = array.splice(randomIndex, 1)
-		return step(array, [...acc, randomValue]) 
+		return step([...array], [...acc, randomValue]) 
 	}
-	return step(array, []);
+	return step([...array], []).map(e => e[0]); // TODO
 }
 
 module.exports = {	updatedData, 

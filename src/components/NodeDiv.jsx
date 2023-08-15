@@ -8,7 +8,8 @@ const NodeDiv = (props) => {
 				style={{backgroundColor: `${props.c}`, 
 						width: `${props.w}px`, 
 						height: `${props.h}px`, 
-						margin: `5px ${props.m}px`}}>
+						margin: `5px ${props.m}px`,
+						border: `${props.b}`}}>
 			{ props.v }
 		</div> 
 	)

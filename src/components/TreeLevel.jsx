@@ -17,12 +17,13 @@ const TreeLevel = (props) => {
 		const value = divIsEmpty ? "" : props.nodes.filter( k => tree.getIndexString(k) === `${props.i}-${j}` )[0];
 		const color = divIsEmpty ? 'inherit' : props.colors[value];
 		const width = divIsEmpty ? 0 : 25;
-		const height = divIsEmpty ? 1 : 25;
-		const onClickFn = divIsEmpty ? () => {} : props.fn(value);
+		const height = divIsEmpty ? 0 : 25;
 		const margin = props.i < 6 ? 20-3*props.i : 9-props.i;
+		const border = divIsEmpty ? "1px solid gray" : "2px solid black";
+		const onClickFn = divIsEmpty ? () => {} : props.fn(value);
 		
 		return <NodeDiv v={value} c={color} i={props.i} j={j} key={2**props.i + j} 
-						w={width} h={height} m={margin} f={onClickFn} />;	
+						w={width} h={height} m={margin} b={border} f={onClickFn} />;	
 	});
 
 
