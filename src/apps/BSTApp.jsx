@@ -3,19 +3,23 @@ import React, { useState, useRef } from 'react'
 import Tree from '../components/Tree'
 import NodeButton from '../components/NodeButton'
 
-import { hideElement, showElement, disableButton, enableButton, sequence, shuffle, deepCopyData } from '../js-classes/HelperFunctions'
+import { hideElement, showElement, disableButton, enableButton, 
+			sequence, shuffle, deepCopyData } from '../js-classes/HelperFunctions'
 
 
 
 const BSTApp = () => {
 
-	const n = 10;
-	const colors = ["firebrick", "orangered", "darkorange", "gold", "limegreen", "seagreen", "darkcyan", "cornflowerblue", "mediumpurple", "darkorchid"];
 	const [nodeList, setNodeList] = useState([]);
 	const [timeoutID, setTimeoutID] = useState(-1);
+	const [mode, setMode] = useState('');
 	const memory = useRef([]);
 	const posInMemory = useRef(-1);
-	/* ------------------------------------------------------------------------- */
+	/* ---------------------------------------------------------------------------------------- */
+	const n = 10;
+	const colors = ["firebrick", "orangered", "darkorange", "gold", "limegreen", 
+					"seagreen", "darkcyan", "cornflowerblue", "mediumpurple", "darkorchid"];
+	/* ---------------------------------------------------------------------------------------- */
 	const appHeader = () => document.querySelector(".appHeader");
 	const pathDiv = () => document.querySelector("#BSTApp-path");
 	const msgDiv = () => document.querySelector(".inProgressMsg");
@@ -26,14 +30,10 @@ const BSTApp = () => {
 	const pauseButton = () => document.querySelector("#BSTApp-pauseButton");
 	const backButton = () => document.querySelector("#BSTApp-backButton");
 	const forwardButton = () => document.querySelector("#BSTApp-forwardButton");
-	const zoomInButton = () => document.querySelector("#BSTApp-zoomInButton");
-	const zoomOutButton = () => document.querySelector("#BSTApp-zoomOutButton");
 	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
+	// const zoomInButton = () => document.querySelector("#BSTApp-zoomInButton"); // future use
+	// const zoomOutButton = () => document.querySelector("#BSTApp-zoomOutButton"); // future use
 	
-	
-	const makeNodeButtons = n => sequence(n).map( i => {
-		return <NodeButton id={i} fn={addNode} color={colors[i]} key={i} />
-	})
 
 	const start = () => {
 		hideElement(startButton());
@@ -45,39 +45,47 @@ const BSTApp = () => {
 	}
 
 	const reset = () => {
-		nodeList.forEach(k => enableButton(nodeButton(k)));
+		nodeList.forEach(k => {
+			enableButton(nodeButton(k))
+		});
 		setNodeList([]);
 	}
 
 	const random = () => {
 		const newList = shuffle(sequence(n));
-		sequence(n).forEach(index => disableButton(nodeButton(index)));
-		setNodeList(newList);
-		return newList;
+		sequence(n).forEach(index => {
+			disableButton(nodeButton(index));
+		});
+		setMode('tree-by-tree');
+		setNodeList(newList); 
+		return newList; // for chaining purposes
 	}
 
 	const addNode = k => () => {
 		disableButton(nodeButton(k));
+		setMode('node-by-node');
 		setNodeList([...nodeList, k]);
 	}
 
 	const removeNode = k => () => {
 		enableButton(nodeButton(k));
 		nodeList.splice(nodeList.indexOf(k), 1);
+		setMode('node-by-node');
 		setNodeList([...nodeList]);
 	}
 	
 	const stream = () => {
-		// enableButton(backButton())
+		hideElement(streamButton());
+		showElement(pauseButton());
+		showElement(backButton());
+		showElement(forwardButton());
+
 		const id = setInterval(() => { 
 			const newList = random(); 
 			memory.current = [...memory.current, newList];
-			// console.log(...memory.current)
-			console.log(newList);
-		}, 500);
+		}, 5000);
+
 		setTimeoutID(id);
-		hideElement(streamButton());
-		showElement(pauseButton());
 	}
 
 	const pause = () => {
@@ -91,7 +99,6 @@ const BSTApp = () => {
 	const back = () => {
 		if(posInMemory.current === 1) { disableButton(backButton()); } 
 		else if(posInMemory.current === memory.current.length - 1) { enableButton(forwardButton()); } 
-
 		setNodeList(memory.current[posInMemory.current-1]);
 		posInMemory.current = posInMemory.current - 1;
 	}
@@ -99,18 +106,12 @@ const BSTApp = () => {
 	const forward = () => {
 		if(posInMemory.current === 0) { enableButton(backButton()); } 
 		else if(posInMemory.current === memory.current.length - 2) { disableButton(forwardButton()); } 
-
 		setNodeList(memory.current[posInMemory.current+1]);
 		posInMemory.current = posInMemory.current + 1;
 	}
 
-	const zoomIn = () => {
-
-	}
-
-	const zoomOut = () => {
-
-	}
+	const zoomIn = () => {}
+	const zoomOut = () => {}
 
 
 	return (
@@ -122,43 +123,40 @@ const BSTApp = () => {
 			
 			<div className='appContent'>
 
+			{/* TREE: FILLED IN PROGRAMMATICALLY */}
 				<span className='wrapper hidden' id='treeWrapper'>
-					<Tree nodes={nodeList} colors={colors} fn={removeNode}/>
+					<Tree nodes={nodeList} mode={mode} colors={colors} fn={removeNode} />
 				</span>
 				
+			{/* START BUTTON */}
 				<button className='BSTApp-button' id='BSTApp-startButton' onClick={start}>
 					Plant A Tree
 				</button>
 
+			{/* BUTTON PANEL: node buttons, action buttons */}
 				<div className='BSTApp-buttonPanel hidden'>
-					<div className='bundle' style={{display: 'flex'}}>{ makeNodeButtons(n) }</div>
-					<div className='bundle' style={{display: 'flex', width: '100%'}}>
-						<button className='BSTApp-button' id='BSTApp-resetButton' onClick={reset}>
-							Reset
-						</button>
-						<button className='BSTApp-button' id='BSTApp-randomButton' onClick={random}>
-							Random Tree
-						</button>
+
+					{/* ROW OF BUTTONS: for adding nodes 0 - 9 */}
+					<div className='bundle' style={{display: 'flex'}}>
+						{ sequence(n).map( i => <NodeButton id={i} fn={addNode} color={colors[i]} key={i} /> ) }
 					</div>
+
+					{/* ROW OF BUTTONS: reset (clears the screen); random (draws a random BST) */}
 					<div className='bundle' style={{display: 'flex', width: '100%'}}>
-						<button className='BSTApp-button' id='BSTApp-zoomInButton' onClick={zoomIn} disabled>
-								Zoom In
-						</button>
-						<button className='BSTApp-button' id='BSTApp-backButton' onClick={back} >
-								&lt;
-						</button>
-						<button className='BSTApp-button' id='BSTApp-streamButton' onClick={stream}>
-								Stream
-						</button>
-						<button className='BSTApp-button hidden' id='BSTApp-pauseButton' onClick={pause}>
-								Pause
-						</button>
-						<button className='BSTApp-button' id='BSTApp-forwardButton' onClick={forward} >
-								&gt;
-						</button>
-						<button className='BSTApp-button' id='BSTApp-zoomOutButton' onClick={zoomOut} disabled>
-								Zoom Out
-						</button>
+						<button className='BSTApp-button' id='BSTApp-resetButton' onClick={reset}>Reset</button>
+						<button className='BSTApp-button' id='BSTApp-randomButton' onClick={random}>Random</button>
+					</div>
+
+					{/* ROW OF BUTTONS: stream/pause (draws an unbounded sequence of random BSTs); */}
+					{/*                 back/forward (skip around "in memory") */}
+					{/*					zoom in/out (future use)  */}
+					<div className='bundle' style={{display: 'flex', width: '100%'}}>
+						<button className='BSTApp-button' id='BSTApp-zoomInButton' onClick={zoomIn} disabled>Zoom In</button>
+						<button className='BSTApp-button hidden' id='BSTApp-backButton' onClick={back}>&lt;</button>
+						<button className='BSTApp-button' id='BSTApp-streamButton' onClick={stream}>Stream</button>
+						<button className='BSTApp-button hidden' id='BSTApp-pauseButton' onClick={pause}>Pause</button>
+						<button className='BSTApp-button hidden' id='BSTApp-forwardButton' onClick={forward}>&gt;</button>
+						<button className='BSTApp-button' id='BSTApp-zoomOutButton' onClick={zoomOut} disabled>Zoom Out </button>
 					</div>
 				</div>
 

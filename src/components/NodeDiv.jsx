@@ -3,13 +3,12 @@ import React from 'react'
 
 const NodeDiv = (props) => {
 
+	const id = `nodeDiv${props.i}-${props.j}`;
+
 	return ( 
-		<div className='NodeDiv' id={`nodeDiv${props.i}-${props.j}`} onClick={props.f} 
-				style={{backgroundColor: `${props.c}`, 
-						width: `${props.w}px`, 
-						height: `${props.h}px`, 
-						margin: `5px ${props.m}px`,
-						border: `${props.b}`}}>
+		<div className='NodeDiv' id={id} onClick={props.fn(props.v)} 
+				style={{backgroundColor: `${props.c}`, opacity: `${props.opacity}%`,
+						width: `${props.w}px`, height: `${props.h}px`, margin: `${props.m_v}px ${props.m_h}px`}}>
 			{ props.v }
 		</div> 
 	)

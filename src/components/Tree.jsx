@@ -1,21 +1,23 @@
 import React from 'react'
+import BST from '../js-classes/BSTClass'
 import TreeLevel from './TreeLevel'
 import { sequence } from '../js-classes/HelperFunctions'
-import BST from '../js-classes/BSTClass'
+
 
 const Tree = (props) => {
 	
-	const tree = new BST();
-	tree.addValues(props.nodes);
-
-	const treeLevels = sequence(tree.height()).map( i => {
-		return <TreeLevel nodes={props.nodes} colors={props.colors} fn={props.fn} i={i} key={i} />
-	})
+	const nodes = [...props.nodes];
+	const myTree = new BST().addValues(nodes);
+	const treeHeight = myTree.height();
 
 
 	return (
 		<div className='Tree'>
-			{ treeLevels }
+			{ 
+				sequence(treeHeight).map( i => {
+					return <TreeLevel nodes={nodes} mode={props.mode} colors={props.colors} fn={props.fn} i={i} key={i} />
+				})
+			}
 		</div>
 	)
 }

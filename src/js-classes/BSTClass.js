@@ -49,6 +49,12 @@ class BST {
 		else { return this.left.containsValue(v) || this.right.containsValue(v) }
 	}
 
+	subtree(v) {
+		if(this.value === v) { return this; }
+		else if(v < this.value) { return this.left.subtree(v); }
+		else if(v > this.value) { return this.right.subtree(v); }
+	}
+
 	getIndex(v) { // only call with values that are actually present
 		if(v === this.value) { return [this.rowIndex, this.colIndex]; }
 		else if(v < this.value) {  return this.left.getIndex(v) }
@@ -65,11 +71,10 @@ class BST {
 		return this.getIndex(value).reduce((i, j) => `${i}-${j}`)
 	}
 
-	valueAtIndex(i, j) { // not tested yet
-		if(i < this.rowIndex) {
-			if(j < 2*(this.colIndex+1)) { return this.left.valueAtIndex(i, j) }
-			else { return this.right.valueAtIndex(i, j) }
-		} else { return this.value }
+	valueAtIndex(i, j) { // lazy solution
+		if(this.value === null) { return 0; }
+		if(this.rowIndex < i) { return this.left.valueAtIndex(i,j) + this.right.valueAtIndex(i,j); }
+		if(this.rowIndex === i) { return this.colIndex === j ? this.value : 0; }
 	}
 	
 	height() {

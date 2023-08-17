@@ -2,34 +2,33 @@ import React from 'react'
 
 import { sequence } from '../js-classes/HelperFunctions'
 import BST from '../js-classes/BSTClass'
-import NodeDiv from './NodeDiv';
+import TreeCell from './TreeCell';
 
 
 const TreeLevel = (props) => {
 
-	const tree = new BST();
-	tree.addValues(props.nodes)
+	const nodes = [...props.nodes];
+	const myTree = new BST().addValues(nodes);
+	const i = props.i;
+
+	const relevantNodes = nodes.filter( value => myTree.subtree(value).rowIndex === i );
+	const relevantCols = relevantNodes.map( value => myTree.subtree(value).colIndex );
 
 	
-	const nodeDivs = sequence(2**props.i).map( j => {
+	const cells = sequence(2**i).map( j => {
 
-		const divIsEmpty = 0 === props.nodes.filter( k => tree.getIndexString(k) === `${props.i}-${j}` ).length;
-		const value = divIsEmpty ? "" : props.nodes.filter( k => tree.getIndexString(k) === `${props.i}-${j}` )[0];
-		const color = divIsEmpty ? 'inherit' : props.colors[value];
-		const width = divIsEmpty ? 0 : 25;
-		const height = divIsEmpty ? 0 : 25;
-		const margin = props.i < 6 ? 20-3*props.i : 9-props.i;
-		const border = divIsEmpty ? "1px solid gray" : "2px solid black";
-		const onClickFn = divIsEmpty ? () => {} : props.fn(value);
+		const isEmpty = !relevantCols.includes(j);
+		const v = isEmpty ? -1 : myTree.valueAtIndex(i,j);
+		const c = isEmpty ? "inherit" : props.colors[v];
+		const fn = isEmpty ? () => {} : props.fn;
 		
-		return <NodeDiv v={value} c={color} i={props.i} j={j} key={2**props.i + j} 
-						w={width} h={height} m={margin} b={border} f={onClickFn} />;	
+		return <TreeCell mode={props.mode} i={i} j={j} v={v} key={j} c={c} fn={fn} nodes={props.nodes} />
 	});
 
 
 	return (
-		<div className='TreeLevel' id={`treeLevel${props.i}`}>
-			{nodeDivs}
+		<div className='TreeLevel' id={`treeLevel${i}`}>
+			{cells}
 		</div>
 	)
 }
