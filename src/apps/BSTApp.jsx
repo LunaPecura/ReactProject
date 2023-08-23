@@ -53,11 +53,14 @@ const BSTApp = () => {
 
 	const random = () => {
 		const newList = shuffle(sequence(n));
-		sequence(n).forEach(index => {
-			disableButton(nodeButton(index));
-		});
+		
 		setMode('tree-by-tree');
-		setNodeList(newList); 
+		setNodeList([]);
+
+		setTimeout(() => {
+			setNodeList(newList);
+		}, 100);
+		
 		return newList; // for chaining purposes
 	}
 
@@ -83,7 +86,7 @@ const BSTApp = () => {
 		const id = setInterval(() => { 
 			const newList = random(); 
 			memory.current = [...memory.current, newList];
-		}, 5000);
+		}, 2000);
 
 		setTimeoutID(id);
 	}
@@ -125,7 +128,7 @@ const BSTApp = () => {
 
 			{/* TREE: FILLED IN PROGRAMMATICALLY */}
 				<span className='wrapper hidden' id='treeWrapper'>
-					<Tree nodes={nodeList} mode={mode} colors={colors} fn={removeNode} />
+					<Tree nodes={nodeList} mode={mode} colors={colors} fn={removeNode} setNodeList={setNodeList} />
 				</span>
 				
 			{/* START BUTTON */}

@@ -5,30 +5,40 @@ import BST from '../js-classes/BSTClass'
 import TreeCell from './TreeCell';
 
 
+/* CREATE CELLS (i,j) FOR ROW i (2^i TOTAL) */
+
 const TreeLevel = (props) => {
 
 	const nodes = [...props.nodes];
 	const myTree = new BST().addValues(nodes);
-	const i = props.i;
 
-	const relevantNodes = nodes.filter( value => myTree.subtree(value).rowIndex === i );
-	const relevantCols = relevantNodes.map( value => myTree.subtree(value).colIndex );
-
-	
-	const cells = sequence(2**i).map( j => {
-
-		const isEmpty = !relevantCols.includes(j);
-		const v = isEmpty ? -1 : myTree.valueAtIndex(i,j);
-		const c = isEmpty ? "inherit" : props.colors[v];
-		const fn = isEmpty ? () => {} : props.fn;
-		
-		return <TreeCell mode={props.mode} i={i} j={j} v={v} key={j} c={c} fn={fn} nodes={props.nodes} />
-	});
-
+	// all column indices in row i that have values associated with them
+	const occCols = nodes.map(value => myTree.getIndex(value))
+							.filter(index => index[0] === props.i)
+							.map(index => index[1]);
 
 	return (
-		<div className='TreeLevel' id={`treeLevel${i}`}>
-			{cells}
+		<div className='TreeLevel' id={`treeLevel${props.i}`}>
+			<div className='wrapper flex'>	
+			{
+				sequence(2 ** props.i).map( j => {
+					const isEmpty = !occCols.includes(j); 
+
+					// set attributes of each cell (i,j) depending on whether cell is empty or occupied
+					const v = !isEmpty ? myTree.valueAtIndex(props.i, j) : -1;
+					const c = !isEmpty ? props.colors[v] : 'inherit';
+					const fn = !isEmpty ? props.fn : () => {};
+
+					return <TreeCell mode={props.mode} nodes={props.nodes} 
+									i={props.i} j={j} v={v} key={j} c={c} fn={fn} />
+				})
+			}
+			</div>
+
+			{/* <div className='wrapper flex'>
+				{nodes.filter(k => myTree.getRowIndex(k) === i)}
+			</div> */}
+
 		</div>
 	)
 }

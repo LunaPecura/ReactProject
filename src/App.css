@@ -72,7 +72,7 @@
 	text-align: right;
 	font-size: small;
 	background-color: whitesmoke;
-	padding: 5px;
+	/* padding: 5px; */
 }
 
 .appContent {
@@ -95,28 +95,33 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 15px;
-	margin: 5px;
+	padding: 0px 15px;
+	margin: 1px;
 	height: 400px;
 	overflow: auto;
+}
+
+.TreeLabel {
+	font-size: 20px;
+	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 .TreeLevel {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	width: fit-content;
 	padding: 5px;
-	margin: 5px;
-	/* border: 2px solid darkseagreen; */
+	margin: 1px;
+	/* border: 3px solid darkseagreen; */
 }
 
 .TreeCell {
 	height: fit-content;
 	width: fit-content;
-	margin: 1px;
-	/* border: solid red; */
+	/* margin: 1px; */
+	/* border: 1px solid gray; */
 }
 
 .NodeDiv {
@@ -128,14 +133,12 @@
 	line-height: 25px;
 	border-radius: 50%;
 	cursor: pointer;
-	/* opacity: 75%; */
 	border: 2px solid black;
-	transition: opacity 1s; /* what's a good value? */
+	transition: opacity 1s; 
 } .NodeDiv:hover {
 	border-width: 2px;
 	border-color: white;
 	color: white;
-	opacity: 80%;
 }
 
 .NodeButton {
@@ -275,5 +278,7 @@ a { color: white; }
 .opacity75 { opacity: 75%; }
 .opacity50 { opacity: 50%; }
 .opacity25 { opacity: 25%; }
+.opacity00 { opacity: 0%; }
 .hidden { display: none; }
+.flex {display: flex;}
 

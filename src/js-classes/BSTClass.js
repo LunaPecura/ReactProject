@@ -8,7 +8,7 @@ class BST {
 	path; // string of 'L's and 'R's indicating the path from the root node / BST
 	rowIndex; // row position i in the BST matrix
 	colIndex;  // column position j in the BST matrix
-	allValues; // integer list of all child values contains in this.BST
+	allValues; // integer list of all child values contained in this.BST
 
 	constructor(path="", i=0, j=0) { 
 		this.value = null; 
@@ -37,25 +37,25 @@ class BST {
 		return this;
 	}
 
-
 	removeValue(v) {
 		this.allValues.splice(this.allValues.indexOf(v), 1);
 		return (new BST()).addValues([...this.allValues]);
 	}
 
 	containsValue(v) {
-		if(this.value === null) { return false; } 
-		else if(v === this.value) { return true; }
-		else { return this.left.containsValue(v) || this.right.containsValue(v) }
+		if(this.value === null) { return false; } // this is where v would have to be located, and it isn't
+		else if(v === this.value) { return true; } // this is where v would have to be located, and it is
+		else if(v < this.value) { return this.left.containsValue(v) } // v can only be located in the left subtree
+		else if(v > this.value) { return this.right.containsValue(v) } // v can only be located in the right subtree
 	}
 
-	subtree(v) {
+	subtree(v) { // only call with values v that are present in the tree
 		if(this.value === v) { return this; }
 		else if(v < this.value) { return this.left.subtree(v); }
 		else if(v > this.value) { return this.right.subtree(v); }
 	}
 
-	getIndex(v) { // only call with values that are actually present
+	getIndex(v) { // only call with values that are present in the tree
 		if(v === this.value) { return [this.rowIndex, this.colIndex]; }
 		else if(v < this.value) {  return this.left.getIndex(v) }
 		else if(v > this.value) { return this.right.getIndex(v) }
@@ -71,7 +71,7 @@ class BST {
 		return this.getIndex(value).reduce((i, j) => `${i}-${j}`)
 	}
 
-	valueAtIndex(i, j) { // lazy solution
+	valueAtIndex(i, j) { // attn, dirty solution
 		if(this.value === null) { return 0; }
 		if(this.rowIndex < i) { return this.left.valueAtIndex(i,j) + this.right.valueAtIndex(i,j); }
 		if(this.rowIndex === i) { return this.colIndex === j ? this.value : 0; }
@@ -84,6 +84,8 @@ class BST {
 
 	// toMatrix() { return Array(this.height()).fill(null).map( (_,i) => Array(2**i).fill(null) ) }
 	deepCopy() { return (new BST()).addValues([...this.allValues]) }
+	getRowIndex(v) { return this.getIndex(v)[0]; }
+	getColIndex(v) { return this.getIndex(v)[1]; }
 	addValues(valueArray) { valueArray.forEach(value => { this.addValue(value); }); return this; }
 }
 
