@@ -1,5 +1,5 @@
 import React from 'react'
-import BST from '../js-classes/BSTClass';
+import BST from '../BSTClass';
 
 const TreeLabel = (props) => {
 

@@ -1,0 +1,48 @@
+
+.AntApp {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	width: 350px;
+}
+
+.AntBoard {
+	border: 2px solid slateblue;
+	width: fit-content;
+	padding: 3px;
+}
+
+.AntCellRow {
+	display: flex;
+	flex-direction: row;
+}
+
+.AntCell {
+	width: 20px;
+	height: 20px;
+	border: 1px solid gray;
+	border-radius: 5px;
+} .Cell:hover {
+	border-color: orangered;
+}
+
+.start, .turn, .step {
+	width: 150px;
+	height: 50px;
+	margin: 10px;
+	cursor: pointer;
+	border: 1px solid gray;
+	background-color: darkgray;
+} .start:hover, .turn:hover, .step:hover {
+	font-weight: bold;
+	border-width: 3px;
+} .turn:hover {
+	background-color: orange;
+	opacity: 75%;
+} .step:hover {
+	background-color: teal;
+	opacity: 75%;
+	color: black;
+}
+
+.hidden { display: none; }
+.flex {display: flex;}

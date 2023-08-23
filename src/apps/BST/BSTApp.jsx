@@ -1,10 +1,11 @@
 
+import './BSTStyle.css'; 
 import React, { useState, useRef } from 'react'
-import Tree from '../components/Tree'
-import NodeButton from '../components/NodeButton'
+import Tree from './components/Tree'
+import NodeButton from './components/NodeButton'
 
 import { hideElement, showElement, disableButton, enableButton, 
-			sequence, shuffle, deepCopyData } from '../js-classes/HelperFunctions'
+			sequence, shuffle, deepCopyData } from '../../utilities/HelperFunctions'
 
 
 

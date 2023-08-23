@@ -1,8 +1,8 @@
 import React from 'react'
-import BST from '../js-classes/BSTClass'
+import BST from '../BSTClass'
 import TreeLevel from './TreeLevel'
 import TreeLabel from './TreeLabel'
-import { sequence } from '../js-classes/HelperFunctions'
+import { sequence } from '../../../utilities/HelperFunctions'
 
 
 

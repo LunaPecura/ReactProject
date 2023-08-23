@@ -1,7 +1,9 @@
+
+import './AntStyle.css'; 
 import React, { useState } from 'react'
-import AntBoard from './AntBoard';
-import Ant from '../js-classes/AntClass'
-import { updatedData } from '../js-classes/HelperFunctions' // TODO
+import AntBoard from './components/AntBoard';
+import Ant from './AntClass'
+import { updatedData } from '../../utilities/HelperFunctions' // TODO
 
 
 

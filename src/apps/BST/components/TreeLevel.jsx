@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { sequence } from '../js-classes/HelperFunctions'
-import BST from '../js-classes/BSTClass'
+import { sequence } from '../../../utilities/HelperFunctions'
+import BST from '../BSTClass'
 import TreeCell from './TreeCell';
 
 
