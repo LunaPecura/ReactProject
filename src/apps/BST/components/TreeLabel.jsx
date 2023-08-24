@@ -9,6 +9,7 @@ const TreeLabel = (props) => {
 	const nodeDiv = (i,j) => document.querySelector(`#nodeDiv${i}-${j}`);
 
 
+	// set all nodes to low opacity & then re-illuminate in order of insertion
 	const animate = () => {
 		nodes.forEach( (value, nodeCount) => {
 			const [i,j] = myTree.getIndex(value);
@@ -17,9 +18,11 @@ const TreeLabel = (props) => {
 			const transTime1 = 0; // in seconds
 			const transTime2 = 1;
 
+			// make removal immediate
 			nodeDiv(i,j).style.transition = `opacity ${transTime1}s`;
 			nodeDiv(i,j).style.opacity = `${opacity1}%`;
 
+			// space out re-illumination
 			setTimeout(() => {
 				nodeDiv(i,j).style.transition = `opacity ${transTime2}s`;
 				nodeDiv(i,j).style.opacity = `${opacity2}%`;
@@ -29,7 +32,7 @@ const TreeLabel = (props) => {
 
 	return (
 		<div className='TreeLabel' onClick={animate}>
-			{[...nodes]}
+			-- {[props.nodes]} --
 		</div>
 	)
 }

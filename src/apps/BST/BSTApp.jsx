@@ -2,10 +2,11 @@
 import './BSTStyle.css'; 
 import React, { useState, useRef } from 'react'
 import Tree from './components/Tree'
+import TreeLabel from './components/TreeLabel'
 import NodeButton from './components/NodeButton'
-
+import HList from '../../components/HList'
 import { hideElement, showElement, disableButton, enableButton, 
-			sequence, shuffle, deepCopyData } from '../../utilities/HelperFunctions'
+			sequence, shuffle } from '../../utilities/HelperFunctions'
 
 
 
@@ -22,20 +23,21 @@ const BSTApp = () => {
 					"seagreen", "darkcyan", "cornflowerblue", "mediumpurple", "darkorchid"];
 	/* ---------------------------------------------------------------------------------------- */
 	const appHeader = () => document.querySelector(".appHeader");
-	const pathDiv = () => document.querySelector("#BSTApp-path");
+	const pathDiv = () => document.querySelector("#path");
 	const msgDiv = () => document.querySelector(".inProgressMsg");
 	const treeDiv = () => document.querySelector('#treeWrapper');
-	const buttonPanel = () => document.querySelector(".BSTApp-buttonPanel");
-	const startButton = () => document.querySelector("#BSTApp-startButton");
-	const streamButton = () => document.querySelector("#BSTApp-streamButton");
-	const pauseButton = () => document.querySelector("#BSTApp-pauseButton");
-	const backButton = () => document.querySelector("#BSTApp-backButton");
-	const forwardButton = () => document.querySelector("#BSTApp-forwardButton");
+	const buttonPanel = () => document.querySelector(".buttonPanel");
+	const startButton = () => document.querySelector(".startButton");
+	const streamButton = () => document.querySelector(".streamButton");
+	const pauseButton = () => document.querySelector(".pauseButton");
+	const backButton = () => document.querySelector(".backButton");
+	const forwardButton = () => document.querySelector(".forwardButton");
 	const nodeButton = k => document.querySelector(`#nodeButton${k}`);
-	// const zoomInButton = () => document.querySelector("#BSTApp-zoomInButton"); // future use
-	// const zoomOutButton = () => document.querySelector("#BSTApp-zoomOutButton"); // future use
+	const zoomInButton = () => document.querySelector(".zoomInButton"); // future use
+	const zoomOutButton = () => document.querySelector(".zoomOutButton"); // future use
 	
 
+	// initial start up
 	const start = () => {
 		hideElement(startButton());
 		hideElement(appHeader());
@@ -121,49 +123,53 @@ const BSTApp = () => {
 	return (
 		<div className='BSTApp'>
 
-			<div className='pathDiv hidden' id='BSTApp-path'><code>/Binary Search Trees</code></div>
+			<div className='pathDiv hidden' id='path'><code>/Binary Search Trees</code></div>
 			<div className='inProgressMsg'>...in progress...</div>
 			<h2 className='appHeader'>Binary Search Trees</h2>
 			
 			<div className='appContent'>
 
-			{/* TREE: FILLED IN PROGRAMMATICALLY */}
+				{/* TREE */}
 				<span className='wrapper hidden' id='treeWrapper'>
-					<Tree nodes={nodeList} mode={mode} colors={colors} fn={removeNode} setNodeList={setNodeList} />
+					<TreeLabel nodes={nodeList} />
+					<Tree nodes={nodeList} mode={mode} colors={colors} 
+							fn={removeNode} setNodeList={setNodeList} />
 				</span>
 				
-			{/* START BUTTON */}
-				<button className='BSTApp-button' id='BSTApp-startButton' onClick={start}>
+				{/* START BUTTON */}
+				<button className='startButton' onClick={start}>
 					Plant A Tree
 				</button>
 
-			{/* BUTTON PANEL: node buttons, action buttons */}
-				<div className='BSTApp-buttonPanel hidden'>
+				{/* BUTTON PANEL: node buttons, action buttons */}
+				<div className='buttonPanel hidden'>
 
-					{/* ROW OF BUTTONS: for adding nodes 0 - 9 */}
-					<div className='bundle' style={{display: 'flex'}}>
-						{ sequence(n).map( i => <NodeButton id={i} fn={addNode} color={colors[i]} key={i} /> ) }
-					</div>
+					{/* Node Buttons 0-9 */}
+					<HList>
+					{ 
+						sequence(n).map( i => {
+							return <NodeButton id={i} fn={addNode} color={colors[i]} key={i} /> 
+						}) 
+					}	
+					</HList>
 
-					{/* ROW OF BUTTONS: reset (clears the screen); random (draws a random BST) */}
-					<div className='bundle' style={{display: 'flex', width: '100%'}}>
-						<button className='BSTApp-button' id='BSTApp-resetButton' onClick={reset}>Reset</button>
-						<button className='BSTApp-button' id='BSTApp-randomButton' onClick={random}>Random</button>
-					</div>
+					{/* Action Buttons: reset, random */}
+					<HList>
+						<button className='resetButton' onClick={reset}>Reset</button>
+						<button className='randomButton' onClick={random}>Random</button>
+					</HList>
 
-					{/* ROW OF BUTTONS: stream/pause (draws an unbounded sequence of random BSTs); */}
-					{/*                 back/forward (skip around "in memory") */}
-					{/*					zoom in/out (future use)  */}
-					<div className='bundle' style={{display: 'flex', width: '100%'}}>
-						<button className='BSTApp-button' id='BSTApp-zoomInButton' onClick={zoomIn} disabled>Zoom In</button>
-						<button className='BSTApp-button hidden' id='BSTApp-backButton' onClick={back}>&lt;</button>
-						<button className='BSTApp-button' id='BSTApp-streamButton' onClick={stream}>Stream</button>
-						<button className='BSTApp-button hidden' id='BSTApp-pauseButton' onClick={pause}>Pause</button>
-						<button className='BSTApp-button hidden' id='BSTApp-forwardButton' onClick={forward}>&gt;</button>
-						<button className='BSTApp-button' id='BSTApp-zoomOutButton' onClick={zoomOut} disabled>Zoom Out </button>
-					</div>
+					{/* Action Buttons: stream/pause, back/forward, zoom in/out */}
+					<HList>
+						<button className='zoomInButton' onClick={zoomIn} disabled>Zoom In</button>
+						<button className='backButton hidden' onClick={back}>&lt;</button>
+						<button className='streamButton' onClick={stream}>Stream</button>
+						<button className='pauseButton hidden' onClick={pause}>Pause</button>
+						<button className='forwardButton hidden' onClick={forward}>&gt;</button>
+						<button className='zoomOutButton' onClick={zoomOut} disabled>Zoom Out</button>
+					</HList>
+
 				</div>
-
 			</div>	
 		</div>
 )}
