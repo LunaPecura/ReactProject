@@ -32,7 +32,9 @@ const TreeLabel = (props) => {
 
 	return (
 		<div className='TreeLabel' onClick={animate}>
-			-- {[props.nodes]} --
+		-- {
+			[props.nodes]
+		} --
 		</div>
 	)
 }

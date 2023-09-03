@@ -130,7 +130,7 @@ const BSTApp = () => {
 			<div className='appContent'>
 
 				{/* TREE */}
-				<span className='wrapper hidden' id='treeWrapper'>
+				<span className='treeWrapper hidden' id='treeWrapper'>
 					<TreeLabel nodes={nodeList} />
 					<Tree nodes={nodeList} mode={mode} colors={colors} 
 							fn={removeNode} setNodeList={setNodeList} />
@@ -155,18 +155,18 @@ const BSTApp = () => {
 
 					{/* Action Buttons: reset, random */}
 					<HList>
-						<button className='resetButton' onClick={reset}>Reset</button>
-						<button className='randomButton' onClick={random}>Random</button>
+						<button className='resetButton' onClick={reset}> Reset </button>
+						<button className='randomButton' onClick={random}> Random </button>
 					</HList>
 
 					{/* Action Buttons: stream/pause, back/forward, zoom in/out */}
 					<HList>
-						<button className='zoomInButton' onClick={zoomIn} disabled>Zoom In</button>
-						<button className='backButton hidden' onClick={back}>&lt;</button>
-						<button className='streamButton' onClick={stream}>Stream</button>
-						<button className='pauseButton hidden' onClick={pause}>Pause</button>
-						<button className='forwardButton hidden' onClick={forward}>&gt;</button>
-						<button className='zoomOutButton' onClick={zoomOut} disabled>Zoom Out</button>
+						<button className='zoomInButton' onClick={zoomIn} disabled> Zoom In </button>
+						<button className='backButton hidden' onClick={back}> &lt; </button>
+						<button className='streamButton' onClick={stream}> Stream </button>
+						<button className='pauseButton hidden' onClick={pause}> Pause </button>
+						<button className='forwardButton hidden' onClick={forward}> &gt; </button>
+						<button className='zoomOutButton' onClick={zoomOut} disabled> Zoom Out </button>
 					</HList>
 
 				</div>

@@ -10,7 +10,9 @@
 	width: 100%;
 	text-align: right;
 	font-size: small;
-	background-color: whitesmoke;
+	background-color: inherit;
+	position: relative;
+	bottom: 40px;
 	/* padding: 5px; */
 }
 
@@ -47,6 +49,14 @@ button:disabled {
 	cursor: auto;
 }
 
+.treeWrapper {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	/* justify-items: center; */
+	align-items: center;
+}
+
 .Tree {
 	display: flex;
 	flex-direction: column;
@@ -55,13 +65,16 @@ button:disabled {
 	margin: 1px;
 	height: 400px;
 	overflow: auto;
-	border: 3px solid tan;
+	/* border: 3px solid tan; */
 }
 
 .TreeLabel {
+	height: 10px;
 	font-size: 20px;
-	margin-bottom: 10px;
+	width: fit-content;
+	padding-bottom: 10px;
 	cursor: pointer;
+	border-bottom: 1px dashed black;
 }
 
 .TreeLevel {
